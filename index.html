@@ -1,0 +1,1407 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>ВАЗ-2101 «Копейка» — музей легенды</title>
+<meta name="description" content="Документальный сайт-музей про ВАЗ-2101 «Копейка»: история, хронология, техника, модификации, галерея и интерактивные экспонаты.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Russo+One&family=PT+Sans:ital,wght@0,400;0,700;1,400&family=PT+Mono&display=swap" rel="stylesheet">
+<script>
+  // Если фото с Wikimedia не загрузилось — показываем чертёжную заглушку
+  window.fb = function (img) {
+    var d = document.createElement('div');
+    d.className = 'ph';
+    d.innerHTML = '<svg viewBox="0 0 800 340" aria-hidden="true"><use href="#car-line"/></svg><span>' + (img.alt || 'ВАЗ-2101') + '</span>';
+    img.replaceWith(d);
+  };
+</script>
+<style>
+:root{
+  --paper:#F5EEDD; --paper-2:#ECE2C8; --paper-3:#E3D6B6;
+  --green:#2E4B3F; --green-2:#223a30;
+  --red:#C14A2B; --ink:#1A1A1A; --ochre:#D9A441;
+  --muted:#5b5446; --line:rgba(26,26,26,.16); --line-strong:rgba(26,26,26,.55);
+  --head:'Russo One','Arial Black',Impact,system-ui,sans-serif;
+  --body:'PT Sans','Segoe UI',Roboto,Arial,sans-serif;
+  --mono:'PT Mono','Consolas','Courier New',monospace;
+  --wrap:1200px; --gut:clamp(16px,4vw,40px);
+  --r:4px;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--paper);color:var(--ink);font:400 18px/1.6 var(--body);overflow-x:hidden}
+img{max-width:100%;display:block}
+a{color:inherit}
+button{font:inherit;cursor:pointer}
+::selection{background:var(--ochre);color:var(--ink)}
+
+/* Зерно бумаги */
+body::before{content:"";position:fixed;inset:-50%;z-index:9999;pointer-events:none;opacity:.17;mix-blend-mode:multiply;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0.1 0 0 0 0 0.08 0 0 0 0 0.05 0 0 0 1 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  animation:grain 1.2s steps(6) infinite}
+@keyframes grain{0%{transform:translate(0,0)}20%{transform:translate(-3%,2%)}40%{transform:translate(2%,-3%)}60%{transform:translate(-2%,-1%)}80%{transform:translate(3%,3%)}100%{transform:translate(0,0)}}
+/* Пятна старения */
+body::after{content:"";position:fixed;inset:0;z-index:9998;pointer-events:none;
+  background:radial-gradient(ellipse at 10% 0%,rgba(150,110,40,.10),transparent 45%),radial-gradient(ellipse at 100% 100%,rgba(150,110,40,.12),transparent 50%)}
+
+.wrap{max-width:var(--wrap);margin:0 auto;padding-inline:var(--gut)}
+.blueprint{background-image:linear-gradient(var(--line) 1px,transparent 1px),linear-gradient(90deg,var(--line) 1px,transparent 1px);background-size:48px 48px}
+
+/* ---------- Шапка ---------- */
+.top{position:fixed;top:0;left:0;right:0;z-index:50;padding-top:env(safe-area-inset-top,0px);
+  background:rgba(245,238,221,.88);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);
+  border-bottom:1px solid var(--line);transform:translateY(-100%);transition:transform .35s}
+.top.show{transform:none}
+.top .wrap{display:flex;align-items:center;gap:20px;height:56px}
+.logo{font-family:var(--head);font-size:17px;text-decoration:none;white-space:nowrap;display:flex;align-items:center;gap:8px}
+.logo i{display:inline-block;width:10px;height:10px;background:var(--red);border-radius:50%}
+.top nav{display:flex;gap:4px;overflow-x:auto;scrollbar-width:none;margin-left:auto;mask-image:linear-gradient(90deg,transparent,#000 12px,#000 calc(100% - 12px),transparent)}
+.top nav::-webkit-scrollbar{display:none}
+.top nav a{font:14px var(--mono);text-decoration:none;padding:8px 10px;white-space:nowrap;border-radius:3px;color:var(--muted)}
+.top nav a:hover,.top nav a.cur{color:var(--paper);background:var(--green)}
+
+/* ---------- Общие ---------- */
+section{position:relative;padding-block:clamp(72px,10vw,130px)}
+.kicker{font:14px/1 var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--red);display:flex;align-items:center;gap:12px;margin:0 0 18px}
+.kicker::before{content:"";width:34px;height:2px;background:currentColor}
+h1,h2,h3{font-family:var(--head);font-weight:400;line-height:1.05;margin:0;letter-spacing:-.005em}
+h2{font-size:clamp(34px,5.6vw,64px);margin-bottom:22px;text-transform:uppercase}
+h3{font-size:clamp(21px,2.4vw,26px)}
+.lead{font-size:clamp(18px,2vw,21px);color:var(--muted);max-width:720px;margin:0 0 40px}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:54px;padding:0 26px;border:2px solid var(--ink);
+  background:var(--ink);color:var(--paper);font:400 16px/1 var(--head);text-transform:uppercase;letter-spacing:.04em;text-decoration:none;border-radius:var(--r);
+  transition:transform .15s,box-shadow .15s,background .2s,color .2s;box-shadow:4px 4px 0 var(--red);-webkit-tap-highlight-color:transparent;user-select:none}
+.btn:hover{transform:translate(-2px,-2px);box-shadow:6px 6px 0 var(--red)}
+.btn:active{transform:translate(2px,2px);box-shadow:1px 1px 0 var(--red)}
+.btn.ghost{background:transparent;color:var(--ink);box-shadow:4px 4px 0 var(--ochre)}
+.btn.ghost:hover{box-shadow:6px 6px 0 var(--ochre)}
+.btn.red{background:var(--red);border-color:var(--red);box-shadow:4px 4px 0 var(--ink)}
+.btn.green{background:var(--green);border-color:var(--green);box-shadow:4px 4px 0 var(--ochre)}
+.btn[disabled]{opacity:.45;pointer-events:none}
+.btn:focus-visible,.tab:focus-visible,.ba:focus-visible,input:focus-visible{outline:3px solid var(--ochre);outline-offset:3px}
+
+.reveal{opacity:0;transform:translateY(34px);transition:opacity .9s cubic-bezier(.2,.7,.2,1),transform .9s cubic-bezier(.2,.7,.2,1)}
+.reveal.in{opacity:1;transform:none}
+.reveal.d1{transition-delay:.1s}.reveal.d2{transition-delay:.2s}.reveal.d3{transition-delay:.3s}
+
+figure{margin:0}
+.photo{position:relative;background:var(--paper-3);border:1px solid var(--line-strong);padding:10px 10px 0;box-shadow:0 18px 40px -22px rgba(40,30,10,.55)}
+.photo img{width:100%;height:auto;filter:sepia(.18) contrast(1.04) saturate(.92)}
+.photo figcaption{font:13px/1.45 var(--mono);color:var(--muted);padding:10px 2px 12px}
+.ph{aspect-ratio:4/3;width:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;color:var(--green);
+  background-color:#eae0c4;background-image:linear-gradient(rgba(46,75,63,.13) 1px,transparent 1px),linear-gradient(90deg,rgba(46,75,63,.13) 1px,transparent 1px);background-size:24px 24px}
+.ph svg{width:78%;height:auto}
+.ph span{font:12px var(--mono);text-align:center;padding:0 12px}
+
+/* ---------- HERO ---------- */
+.hero{min-height:100vh;min-height:100svh;display:flex;align-items:center;padding-block:96px 64px;overflow:hidden;isolation:isolate}
+.hero-bg{position:absolute;inset:-10% 0 -10% 0;z-index:-1;will-change:transform}
+.hero-bg .stripes{position:absolute;right:-8%;top:0;bottom:0;width:58%;background:var(--green);clip-path:polygon(22% 0,100% 0,100% 100%,0 100%)}
+.hero-bg .stripes::before{content:"";position:absolute;inset:0;background:repeating-linear-gradient(115deg,transparent 0 46px,rgba(217,164,65,.14) 46px 50px)}
+.hero-bg .stripes::after{content:"";position:absolute;left:14%;top:0;bottom:0;width:22px;background:var(--red);transform:skewX(-12deg)}
+.hero-bg .grid{position:absolute;inset:0}
+.hero .wrap{width:100%;display:grid;grid-template-columns:1.05fr 1fr;gap:clamp(24px,4vw,60px);align-items:center}
+.hero h1{font-size:clamp(44px,7.4vw,104px);text-transform:uppercase}
+.hero h1 .model{display:block;color:var(--red)}
+.hero h1 .rest{display:block;font-size:.5em;line-height:1.08;margin-top:.25em}
+.hero .sub{font-size:clamp(18px,1.9vw,22px);max-width:560px;margin:26px 0 34px;color:#3a3529}
+.hero .sub b{font-family:var(--head);font-weight:400;background:var(--ochre);padding:0 6px}
+.hero .ctas{display:flex;flex-wrap:wrap;gap:16px}
+.hero .tags{margin-top:44px;font:14px var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--muted);display:flex;flex-wrap:wrap;gap:6px 14px}
+.hero .tags span+span::before{content:"|";margin-right:14px;color:var(--red)}
+.hero-photo{position:relative;will-change:transform}
+.hero-photo .photo{transform:rotate(1.6deg);background:#f8f2e3}
+.hero-photo .photo img{aspect-ratio:4/3;object-fit:cover}
+.stamp{position:absolute;left:-46px;bottom:-40px;width:150px;height:150px;color:var(--red);transform:rotate(-14deg);filter:drop-shadow(0 2px 0 rgba(0,0,0,.05))}
+.stamp text{font:700 11.5px var(--mono);letter-spacing:.18em;fill:currentColor}
+.scroll-hint{position:absolute;left:50%;bottom:22px;transform:translateX(-50%);font:12px var(--mono);letter-spacing:.2em;color:var(--muted);display:flex;flex-direction:column;align-items:center;gap:8px}
+.scroll-hint::after{content:"";width:2px;height:34px;background:linear-gradient(var(--ink),transparent);animation:drop 1.8s infinite}
+@keyframes drop{0%{transform:scaleY(0);transform-origin:top}50%{transform:scaleY(1);transform-origin:top}51%{transform-origin:bottom}100%{transform:scaleY(0);transform-origin:bottom}}
+
+/* ---------- Цифры ---------- */
+.facts{background:var(--ink);color:var(--paper);padding-block:clamp(56px,7vw,90px)}
+.facts .grid4{display:grid;grid-template-columns:repeat(4,1fr);gap:0;border:1px solid rgba(245,238,221,.25)}
+.fact{padding:clamp(22px,3vw,36px);border-right:1px solid rgba(245,238,221,.25);position:relative}
+.fact:last-child{border-right:0}
+.fact .num{font:400 clamp(36px,4.4vw,58px)/1 var(--head);color:var(--ochre);white-space:nowrap}
+.fact .num small{font-size:.45em;margin-left:4px;color:var(--paper)}
+.fact .lbl{font:14px var(--mono);letter-spacing:.1em;text-transform:uppercase;margin-top:14px;color:rgba(245,238,221,.75)}
+.fact .idx{position:absolute;top:12px;right:14px;font:11px var(--mono);color:rgba(245,238,221,.35)}
+
+/* ---------- История ---------- */
+.two{display:grid;grid-template-columns:1.1fr .9fr;gap:clamp(32px,5vw,72px);align-items:start}
+.prose p{margin:0 0 1.15em;max-width:66ch}
+.prose .drop::first-letter{font:400 4.1em/.82 var(--head);float:left;margin:.08em .1em 0 0;color:var(--red)}
+.quote{margin:34px 0 0;padding:22px 26px;border-left:6px solid var(--red);background:var(--paper-2);font:italic 20px/1.5 var(--body)}
+.quote cite{display:block;margin-top:10px;font:normal 13px var(--mono);color:var(--muted)}
+.history .photo{transform:rotate(-1.2deg)}
+.history .tape{position:absolute;top:-14px;left:50%;width:120px;height:30px;transform:translateX(-50%) rotate(-3deg);background:rgba(217,164,65,.55)}
+
+/* ---------- Хронология ---------- */
+.chrono{background:var(--green);color:var(--paper)}
+.chrono .kicker{color:var(--ochre)}
+.chrono .lead{color:rgba(245,238,221,.75)}
+.tl{position:relative;max-width:900px;margin:30px auto 0;padding:10px 0}
+.tl-line{position:absolute;left:50%;top:0;bottom:0;width:3px;transform:translateX(-50%);background:rgba(245,238,221,.18)}
+.tl-fill{position:absolute;left:0;top:0;width:100%;height:0;background:var(--ochre);box-shadow:0 0 14px rgba(217,164,65,.6)}
+.tl-item{position:relative;display:grid;grid-template-columns:1fr 64px 1fr;align-items:center;margin-bottom:56px}
+.tl-item:last-child{margin-bottom:0}
+.tl-dot{grid-column:2;justify-self:center;width:24px;height:24px;border-radius:50%;background:var(--green);border:3px solid rgba(245,238,221,.4);transition:all .5s;position:relative;z-index:1}
+.tl-item.on .tl-dot{background:var(--ochre);border-color:var(--paper);box-shadow:0 0 0 8px rgba(217,164,65,.22),0 0 24px rgba(217,164,65,.8);transform:scale(1.15)}
+.tl-card{grid-column:3;padding:22px 24px;border:1px solid rgba(245,238,221,.22);background:rgba(0,0,0,.12);opacity:.45;transform:translateX(16px);transition:all .6s}
+.tl-item:nth-child(even) .tl-card{grid-column:1;grid-row:1;text-align:right;transform:translateX(-16px)}
+.tl-item.on .tl-card{opacity:1;transform:none;border-color:rgba(217,164,65,.6)}
+.tl-year{font:400 clamp(34px,4vw,46px)/1 var(--head);color:var(--ochre)}
+.tl-card h3{font-size:20px;margin:8px 0 6px}
+.tl-card p{margin:0;font-size:16px;color:rgba(245,238,221,.8)}
+
+/* ---------- Техника ---------- */
+.tech-photos{display:grid;gap:22px}
+.tech-photos .photo:nth-child(1){transform:rotate(-1deg)}
+.tech-photos .photo:nth-child(2){transform:rotate(1deg);margin-left:8%}
+.spec{width:100%;border-collapse:collapse;font-size:17px}
+.spec caption{text-align:left;font:14px var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--muted);padding-bottom:10px}
+.spec th,.spec td{padding:14px 0;border-bottom:1px dashed var(--line-strong);vertical-align:top;text-align:left}
+.spec th{font:400 14px/1.4 var(--mono);text-transform:uppercase;letter-spacing:.06em;color:var(--muted);padding-right:16px;width:44%}
+.spec td{font-weight:700}
+.spec tr:first-child th,.spec tr:first-child td{border-top:2px solid var(--ink)}
+.vs{margin-top:44px;border:2px solid var(--ink);background:var(--paper-2)}
+.vs-head{display:grid;grid-template-columns:1fr 1fr 1fr;background:var(--ink);color:var(--paper);font:400 15px/1.2 var(--head);text-transform:uppercase}
+.vs-head div{padding:14px 12px}
+.vs-head div:nth-child(2){color:var(--ochre)}
+.vs-row{display:grid;grid-template-columns:1fr 1fr 1fr;border-top:1px solid var(--line)}
+.vs-row div{padding:12px;font-size:15px;line-height:1.4}
+.vs-row div:first-child{font:13px/1.4 var(--mono);text-transform:uppercase;color:var(--muted)}
+.vs-row div:nth-child(2){font-weight:700;background:rgba(217,164,65,.14)}
+.vs-note{padding:14px 12px;font-size:14px;color:var(--muted);border-top:1px solid var(--line)}
+
+/* ---------- Модификации ---------- */
+.mods{background:var(--paper-2)}
+.cards3{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.mod{background:var(--paper);border:2px solid var(--ink);display:flex;flex-direction:column;position:relative;transition:transform .25s,box-shadow .25s}
+.mod:hover{transform:translateY(-6px);box-shadow:8px 8px 0 var(--green)}
+.mod-top{padding:22px 22px 0;display:flex;justify-content:space-between;align-items:flex-start;gap:12px}
+.mod-idx{font:400 30px/1 var(--head)}
+.mod-years{font:13px var(--mono);background:var(--ink);color:var(--paper);padding:5px 8px;white-space:nowrap}
+.mod svg{width:100%;height:auto;padding:12px 18px 0;color:var(--green)}
+.mod-body{padding:6px 22px 24px;flex:1;display:flex;flex-direction:column}
+.mod-tag{font:13px var(--mono);text-transform:uppercase;letter-spacing:.1em;color:var(--red);margin:0 0 12px}
+.mod-stats{display:flex;gap:0;border-top:1px solid var(--ink);border-bottom:1px solid var(--ink);margin-bottom:16px}
+.mod-stats div{flex:1;padding:10px 0;text-align:center}
+.mod-stats div+div{border-left:1px solid var(--ink)}
+.mod-stats b{display:block;font:400 22px/1.1 var(--head)}
+.mod-stats span{font:11px var(--mono);color:var(--muted);text-transform:uppercase}
+.mod ul{margin:0;padding:0;list-style:none;font-size:16px}
+.mod li{padding-left:22px;position:relative;margin-bottom:8px}
+.mod li::before{content:"";position:absolute;left:0;top:.6em;width:10px;height:2px;background:var(--red)}
+
+/* ---------- Галерея ---------- */
+.gallery{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+.gallery figure{cursor:zoom-in}
+.gallery .photo{transition:transform .3s}
+.gallery figure:nth-child(odd) .photo{transform:rotate(-.8deg)}
+.gallery figure:nth-child(even) .photo{transform:rotate(.8deg)}
+.gallery figure:hover .photo{transform:rotate(0) scale(1.02)}
+.gallery .photo img,.gallery .ph{aspect-ratio:4/3;object-fit:cover}
+.gallery .num{position:absolute;top:18px;left:18px;font:12px var(--mono);background:var(--paper);padding:3px 7px;z-index:1}
+.poster{aspect-ratio:4/3;background:var(--ochre);position:relative;overflow:hidden;display:flex;flex-direction:column;justify-content:space-between;padding:7% 7% 6%;color:var(--ink)}
+.poster::before{content:"";position:absolute;right:-20%;top:-30%;width:80%;height:120%;background:var(--red);border-radius:50%}
+.poster .p1{position:relative;font:400 clamp(26px,3vw,40px)/.95 var(--head);color:var(--paper);text-shadow:2px 2px 0 var(--ink)}
+.poster .p1 small{display:block;font-size:.42em;letter-spacing:.2em;color:var(--ink);text-shadow:none;margin-top:6px}
+.poster svg{position:relative;width:86%;align-self:center;color:var(--ink)}
+.poster .p2{position:relative;font:700 12px/1.3 var(--mono);text-transform:uppercase;letter-spacing:.08em;border-top:2px solid var(--ink);padding-top:8px;display:flex;justify-content:space-between;gap:8px}
+
+.lb{position:fixed;inset:0;z-index:100;background:rgba(15,13,9,.92);display:flex;flex-direction:column;align-items:center;justify-content:center;padding:24px 16px;gap:14px;opacity:0;pointer-events:none;transition:opacity .3s}
+.lb.open{opacity:1;pointer-events:auto}
+.lb img{max-height:78vh;width:auto;max-width:100%;border:8px solid var(--paper)}
+.lb p{color:var(--paper);font:14px var(--mono);text-align:center;max-width:720px;margin:0}
+.lb button{position:absolute;top:calc(14px + env(safe-area-inset-top,0px));right:14px;width:52px;height:52px;border:2px solid var(--paper);background:transparent;color:var(--paper);font:28px/1 var(--head)}
+
+/* ---------- Легенды ---------- */
+.legend-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:0;border-top:2px solid var(--ink)}
+.legend{display:grid;grid-template-columns:76px 1fr;gap:22px;padding:34px 28px 34px 0;border-bottom:1px solid var(--line-strong)}
+.legend:nth-child(odd){border-right:1px solid var(--line-strong)}
+.legend:nth-child(even){padding-left:28px;padding-right:0}
+.legend .ico{width:76px;height:76px;border-radius:50%;background:var(--green);color:var(--ochre);display:grid;place-items:center}
+.legend .ico svg{width:40px;height:40px}
+.legend h3{margin-bottom:10px}
+.legend p{margin:0;color:var(--muted);font-size:17px}
+
+/* ---------- Интерактив: общие ---------- */
+.exhibit-label{display:inline-block;font:12px var(--mono);letter-spacing:.16em;text-transform:uppercase;border:1px solid currentColor;padding:6px 10px;margin-bottom:18px}
+
+/* Заведи копейку */
+.ignite{background:#141412;color:var(--paper);overflow:hidden}
+.ignite .kicker{color:var(--ochre)}
+.ignite .lead{color:rgba(245,238,221,.7)}
+.ign-grid{display:grid;grid-template-columns:1.25fr 1fr;gap:clamp(24px,4vw,48px);align-items:start}
+.dash-wrap{background:linear-gradient(180deg,#2b2a26,#1b1a17);border-radius:18px 18px 10px 10px;padding:clamp(12px,2vw,22px);box-shadow:inset 0 2px 0 rgba(255,255,255,.08),0 30px 60px -20px rgba(0,0,0,.8);border:1px solid #3a3832}
+#dash{width:100%;height:auto;display:block}
+#dash .tick{stroke:#eee6d2}
+#dash .lab{fill:#eee6d2;font:15px var(--mono)}
+#dash .needle{transition:none}
+#dash .lamp{opacity:.13;transition:opacity .15s}
+#dash.ign .lamp.l-oil,#dash.ign .lamp.l-bat{opacity:1}
+#dash.running .lamp.l-oil,#dash.running .lamp.l-bat{opacity:.13}
+#dash.lights .lamp.l-park{opacity:1}
+#dash .backlight{opacity:0;transition:opacity .4s}
+#dash.lights .backlight{opacity:.55}
+.ign-controls{display:flex;flex-wrap:wrap;align-items:center;gap:18px;margin-top:22px}
+.keylock{width:96px;height:96px;flex:none}
+#key{transform-box:view-box;transform-origin:50px 50px;transition:transform .28s cubic-bezier(.3,1.6,.5,1)}
+#key[data-pos="on"]{transform:rotate(45deg)}
+#key[data-pos="start"]{transform:rotate(90deg)}
+.ign-btns{display:flex;flex-wrap:wrap;gap:14px;flex:1}
+.ign-btns .btn{flex:1 1 200px}
+.ign-btns .btn.ghost{color:var(--paper);border-color:var(--paper)}
+.ign-msg{min-height:64px;margin-top:22px;font:400 clamp(20px,2.6vw,28px)/1.25 var(--head);color:var(--ochre);opacity:0;transform:translateY(10px);transition:all .5s}
+.ign-msg.show{opacity:1;transform:none}
+.ign-note{font-size:14px;color:rgba(245,238,221,.55);margin:6px 0 0}
+.front-wrap{background:radial-gradient(ellipse at 50% 30%,#2a3a33,#121512 70%);border:1px solid #33322c;border-radius:10px;padding:18px 14px 6px;position:relative;overflow:hidden}
+.front-wrap .cap{font:12px var(--mono);letter-spacing:.14em;text-transform:uppercase;color:rgba(245,238,221,.5);padding:0 6px}
+#front{width:100%;height:auto;display:block}
+#front .glow,#front .beam{opacity:0;transition:opacity .35s}
+#front.on .glow{opacity:1}
+#front.on .beam{opacity:.75}
+#front .lens{transition:fill .3s}
+#front.on .lens{fill:#fff3b8}
+.front-wrap .btn{width:100%;margin:10px 0 12px;color:var(--paper);border-color:var(--paper)}
+.front-wrap .btn.on{background:var(--ochre);border-color:var(--ochre);color:var(--ink)}
+
+/* Калькулятор */
+.calc-box{display:grid;grid-template-columns:.85fr 1.15fr;gap:clamp(24px,4vw,56px);border:2px solid var(--ink);background:var(--paper-2);padding:clamp(20px,4vw,44px);position:relative}
+.calc-box::before{content:"";position:absolute;inset:8px;border:1px dashed var(--line-strong);pointer-events:none}
+.field{display:block;font:14px var(--mono);text-transform:uppercase;letter-spacing:.08em;color:var(--muted);margin-bottom:10px}
+.inp{display:flex;align-items:stretch;border:2px solid var(--ink);background:var(--paper)}
+.inp input{flex:1;min-width:0;border:0;background:transparent;padding:14px 16px;font:400 clamp(26px,3.2vw,36px)/1 var(--head);color:var(--ink);-moz-appearance:textfield;appearance:textfield}
+.inp input::-webkit-outer-spin-button,.inp input::-webkit-inner-spin-button{-webkit-appearance:none;margin:0}
+.inp span{display:flex;align-items:center;padding:0 16px;font:400 22px var(--head);background:var(--ink);color:var(--paper)}
+.presets{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px}
+.presets button{min-height:44px;padding:0 14px;border:1px solid var(--ink);background:transparent;font:14px var(--mono);border-radius:3px}
+.presets button:hover{background:var(--ink);color:var(--paper)}
+.given{margin:26px 0 0;padding:0;list-style:none;font-size:16px}
+.given li{display:flex;justify-content:space-between;gap:12px;padding:9px 0;border-bottom:1px dashed var(--line-strong)}
+.given b{font-family:var(--head);font-weight:400;white-space:nowrap}
+.bar-row{margin-bottom:26px}
+.bar-row .bl{display:flex;justify-content:space-between;align-items:baseline;gap:12px;margin-bottom:8px;flex-wrap:wrap}
+.bar-row .bl span{font:14px var(--mono);text-transform:uppercase;letter-spacing:.06em;color:var(--muted)}
+.bar-row .bl b{font:400 clamp(22px,2.6vw,30px)/1 var(--head)}
+.bar{height:44px;background:repeating-linear-gradient(90deg,rgba(26,26,26,.08) 0 1px,transparent 1px 10%);border:2px solid var(--ink);position:relative;overflow:hidden}
+.bar i{position:absolute;inset:0 auto 0 0;width:0;transition:width .9s cubic-bezier(.2,.8,.2,1)}
+.bar.b70 i{background:var(--green)}
+.bar.b26 i{background:var(--red)}
+.verdict{margin-top:8px;padding:20px 22px;background:var(--ink);color:var(--paper);font:400 clamp(20px,2.4vw,26px)/1.25 var(--head)}
+.verdict em{font-style:normal;color:var(--ochre)}
+.calc-note{font-size:14px;color:var(--muted);margin:14px 0 0}
+
+/* Сравнение */
+.cmp{background:var(--paper-2)}
+.tabs{display:grid;grid-template-columns:repeat(3,1fr);gap:0;border:2px solid var(--ink);margin-bottom:0}
+.tab{min-height:64px;padding:10px 14px;border:0;border-right:2px solid var(--ink);background:var(--paper);font:400 clamp(14px,1.7vw,18px)/1.15 var(--head);text-transform:uppercase;color:var(--ink);transition:background .25s,color .25s}
+.tab:last-child{border-right:0}
+.tab small{display:block;font:12px var(--mono);text-transform:none;opacity:.7;margin-top:4px}
+.tab[aria-selected="true"]{background:var(--ink);color:var(--paper)}
+.tab[aria-selected="true"] small{color:var(--ochre);opacity:1}
+.cmp-table{border:2px solid var(--ink);border-top:0;background:var(--paper)}
+.cmp-row{display:grid;grid-template-columns:minmax(150px,1fr) minmax(150px,1.1fr) 2fr;align-items:center;gap:18px;padding:16px 20px;border-bottom:1px solid var(--line)}
+.cmp-row:last-child{border-bottom:0}
+.cmp-k{font:14px/1.3 var(--mono);text-transform:uppercase;letter-spacing:.06em;color:var(--muted)}
+.cmp-v{font:400 clamp(22px,2.6vw,30px)/1.1 var(--head);white-space:nowrap}
+.cmp-v small{font:15px var(--body);margin-left:4px;color:var(--muted)}
+.cmp-v .sub{display:block;font:13px var(--mono);color:var(--muted);margin-top:4px;white-space:normal}
+.cmp-bars{display:grid;gap:5px}
+.cmp-bars div{height:9px;background:rgba(26,26,26,.08);position:relative}
+.cmp-bars i{position:absolute;inset:0 auto 0 0;background:rgba(26,26,26,.25);transition:width .7s cubic-bezier(.2,.8,.2,1),background .3s}
+.cmp-bars div.cur i{background:var(--red)}
+.cmp-legend{display:flex;flex-wrap:wrap;gap:6px 18px;font:12px var(--mono);color:var(--muted);margin-top:14px}
+.flash{animation:flash .5s}
+@keyframes flash{0%{opacity:.2;transform:translateY(6px)}100%{opacity:1;transform:none}}
+
+/* До/после */
+.ba{position:relative;user-select:none;-webkit-user-select:none;touch-action:pan-y;cursor:ew-resize;border:2px solid var(--ink);overflow:hidden;background:#cfc3a3;--p:50%}
+.ba svg{display:block;width:100%;height:auto}
+.ba .after{position:absolute;inset:0}
+.ba .before{position:absolute;inset:0;clip-path:inset(0 calc(100% - var(--p)) 0 0)}
+.ba .handle{position:absolute;top:0;bottom:0;left:var(--p);width:4px;margin-left:-2px;background:var(--paper);box-shadow:0 0 0 1px var(--ink)}
+.ba .knob{position:absolute;top:50%;left:50%;width:58px;height:58px;margin:-29px 0 0 -29px;border-radius:50%;background:var(--red);border:3px solid var(--paper);box-shadow:0 4px 14px rgba(0,0,0,.4);display:grid;place-items:center;color:var(--paper);font:400 18px var(--head)}
+.ba .tagl,.ba .tagr{position:absolute;top:14px;font:12px/1.3 var(--mono);text-transform:uppercase;letter-spacing:.08em;background:var(--ink);color:var(--paper);padding:6px 9px;pointer-events:none}
+.ba .tagl{left:14px}.ba .tagr{right:14px;background:var(--red)}
+.ba-hint{font:13px var(--mono);color:var(--muted);margin-top:12px;text-align:center}
+.ba-notes{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-top:30px}
+.ba-notes div{border-top:2px solid var(--ink);padding-top:14px;font-size:16px}
+.ba-notes b{font-family:var(--head);font-weight:400;display:block;margin-bottom:6px;font-size:19px}
+
+/* ---------- Footer ---------- */
+footer{background:var(--green);color:var(--paper);padding-block:64px calc(40px + env(safe-area-inset-bottom,0px))}
+footer .wrap{display:grid;grid-template-columns:1.4fr 1fr;gap:40px;align-items:end}
+footer .big{font:400 clamp(40px,7vw,90px)/.9 var(--head);text-transform:uppercase;color:var(--ochre);margin-bottom:22px}
+footer p{margin:0 0 10px;max-width:60ch;color:rgba(245,238,221,.85)}
+footer .credits{font:12px/1.6 var(--mono);color:rgba(245,238,221,.55);margin-top:18px}
+footer .end{display:flex;flex-direction:column;align-items:flex-start;gap:18px}
+footer .btn{background:var(--ochre);border-color:var(--ochre);color:var(--ink);box-shadow:4px 4px 0 var(--ink)}
+.to-top{position:fixed;right:16px;bottom:calc(16px + env(safe-area-inset-bottom,0px));z-index:40;width:54px;height:54px;border-radius:50%;border:2px solid var(--ink);background:var(--ochre);font:400 22px/1 var(--head);display:grid;place-items:center;opacity:0;transform:translateY(20px);pointer-events:none;transition:all .3s;box-shadow:3px 3px 0 var(--ink)}
+.to-top.show{opacity:1;transform:none;pointer-events:auto}
+
+/* ---------- Адаптив ---------- */
+@media (max-width:1000px){
+  .cards3{grid-template-columns:1fr 1fr}
+  .gallery{grid-template-columns:1fr 1fr}
+  .ign-grid{grid-template-columns:1fr}
+  .facts .grid4{grid-template-columns:1fr 1fr}
+  .fact:nth-child(2){border-right:0}
+  .fact:nth-child(-n+2){border-bottom:1px solid rgba(245,238,221,.25)}
+}
+@media (max-width:820px){
+  body{font-size:17px}
+  .hero{padding-top:84px}
+  .hero .wrap,.two,.calc-box,footer .wrap{grid-template-columns:1fr}
+  .hero-bg .stripes{width:100%;top:auto;height:44%;clip-path:polygon(0 18%,100% 0,100% 100%,0 100%);right:0}
+  .hero-bg .stripes::after{display:none}
+  .hero-photo .photo{transform:rotate(1deg)}
+  .hero-photo .photo img{aspect-ratio:auto}
+  .stamp{width:110px;height:110px;left:auto;right:-6px;bottom:-34px}
+  .scroll-hint{display:none}
+  .hero .ctas .btn{flex:1 1 220px}
+  .tech-photos .photo:nth-child(2){margin-left:0}
+  .legend-grid{grid-template-columns:1fr}
+  .legend,.legend:nth-child(even){padding:26px 0;border-right:0}
+  .legend{grid-template-columns:60px 1fr;gap:18px}
+  .legend .ico{width:60px;height:60px}
+  .legend .ico svg{width:32px;height:32px}
+  /* Таймлайн — слева */
+  .tl-line{left:12px;transform:none}
+  .tl-item{grid-template-columns:28px 1fr;gap:16px;margin-bottom:28px}
+  .tl-dot{grid-column:1;width:20px;height:20px;justify-self:start;margin-left:3px}
+  .tl-card,.tl-item:nth-child(even) .tl-card{grid-column:2;grid-row:1;text-align:left;transform:translateX(12px)}
+  .cmp-row{grid-template-columns:1fr auto;gap:8px 14px}
+  .cmp-bars{grid-column:1/-1}
+  .ba-notes{grid-template-columns:1fr}
+}
+@media (max-width:600px){
+  .cards3,.gallery{grid-template-columns:1fr}
+  .gallery .photo img{aspect-ratio:auto;object-fit:contain}
+  .gallery figure .photo{transform:none!important}
+  .vs-head,.vs-row{grid-template-columns:.9fr 1fr 1fr}
+  .vs-row div,.vs-head div{padding:10px 8px;font-size:14px}
+  .vs-row div:first-child{font-size:11px}
+  .tabs{grid-template-columns:1fr}
+  .tab{border-right:0;border-bottom:2px solid var(--ink);min-height:56px}
+  .tab:last-child{border-bottom:0}
+  .ign-controls{flex-direction:column;align-items:stretch}
+  .keylock{align-self:center}
+  .facts .grid4{grid-template-columns:1fr}
+  .fact{border-right:0!important;border-bottom:1px solid rgba(245,238,221,.25)}
+  .fact:last-child{border-bottom:0}
+  .top nav{display:none}
+}
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  body::before{animation:none}
+  .reveal{opacity:1;transform:none;transition:none}
+  .hero-bg,.hero-photo{transform:none!important}
+}
+</style>
+</head>
+<body>
+
+<!-- Общие SVG-символы -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <symbol id="car-line" viewBox="0 0 800 340">
+      <g fill="none" stroke="currentColor" stroke-width="3" stroke-linejoin="round" stroke-linecap="round">
+        <path d="M58 250 L60 214 Q62 197 84 194 L246 187 L298 134 Q308 124 330 123 L522 123 Q542 124 554 134 L612 187 L726 191 Q746 193 747 212 L749 250 Q749 263 735 263 L668 263 A58 58 0 0 0 552 263 L248 263 A58 58 0 0 0 132 263 L72 263 Q58 263 58 250 Z"/>
+        <path d="M266 184 L310 139 Q317 132 330 132 L414 132 L414 184 Z M424 132 L518 132 Q532 132 541 142 L585 184 L424 184 Z"/>
+        <path d="M262 190 L258 256 M418 188 L418 256 M564 190 L556 236 M70 222 L740 222"/>
+        <circle cx="190" cy="268" r="46"/><circle cx="190" cy="268" r="26"/>
+        <circle cx="610" cy="268" r="46"/><circle cx="610" cy="268" r="26"/>
+        <rect x="46" y="236" width="52" height="10" rx="4"/><rect x="710" y="236" width="48" height="10" rx="4"/>
+      </g>
+      <g fill="none" stroke="currentColor" stroke-width="1" opacity=".5" stroke-dasharray="6 6">
+        <path d="M30 316 H770 M190 200 V330 M610 200 V330"/>
+      </g>
+      <text x="400" y="334" text-anchor="middle" font-family="PT Mono, monospace" font-size="14" fill="currentColor" opacity=".7">← 2424 мм →</text>
+    </symbol>
+  </defs>
+</svg>
+
+<header class="top" id="top">
+  <div class="wrap">
+    <a class="logo" href="#hero"><i></i>ВАЗ-2101</a>
+    <nav aria-label="Разделы">
+      <a href="#history">История</a>
+      <a href="#chrono">Хронология</a>
+      <a href="#tech">Техника</a>
+      <a href="#mods">Модификации</a>
+      <a href="#gallery">Галерея</a>
+      <a href="#ignite">Заведи</a>
+      <a href="#calc">Цена</a>
+      <a href="#compare">Сравнение</a>
+      <a href="#restore">Реставрация</a>
+    </nav>
+  </div>
+</header>
+
+<!-- 1. HERO -->
+<section class="hero" id="hero">
+  <div class="hero-bg" id="heroBg">
+    <div class="grid blueprint"></div>
+    <div class="stripes"></div>
+  </div>
+  <div class="wrap">
+    <div>
+      <p class="kicker reveal">Экспозиция № 2101</p>
+      <h1 class="reveal d1"><span class="model">ВАЗ-2101.</span><span class="rest">Копейка, с которой началась страна</span></h1>
+      <p class="sub reveal d2">1970–1988. <b>4,85 млн</b> автомобилей. История, которая до сих пор едет по дорогам.</p>
+      <div class="ctas reveal d3">
+        <a class="btn" href="#history">Читать историю</a>
+        <a class="btn ghost" href="#tech">Смотреть технику</a>
+      </div>
+      <div class="tags reveal d3"><span>Тольятти</span><span>FIAT 124</span><span>СССР</span></div>
+    </div>
+    <div class="reveal d2"><div class="hero-photo" id="heroPhoto">
+      <figure class="photo">
+        <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Moscow_car_show_2025-08-03_VAZ-2101_white_01.jpg?width=1400" alt="Белый ВАЗ-2101 на выставке ретроавтомобилей" fetchpriority="high" onerror="fb(this)">
+        <figcaption>Белая «копейка» на выставке ретроавтомобилей. Фото: Wikimedia Commons</figcaption>
+      </figure>
+      <svg class="stamp" viewBox="0 0 150 150" aria-hidden="true">
+        <defs><path id="circ" d="M75 75 m-56 0 a56 56 0 1 1 112 0 a56 56 0 1 1 -112 0"/></defs>
+        <circle cx="75" cy="75" r="70" fill="none" stroke="currentColor" stroke-width="3"/>
+        <circle cx="75" cy="75" r="42" fill="none" stroke="currentColor" stroke-width="1.5"/>
+        <text><textPath href="#circ">СДЕЛАНО В СССР • ТОЛЬЯТТИ • ВАЗ •</textPath></text>
+        <text x="75" y="70" text-anchor="middle" style="font:400 22px 'Russo One',sans-serif;letter-spacing:0">1970</text>
+        <text x="75" y="92" text-anchor="middle" style="font:700 10px 'PT Mono',monospace;letter-spacing:.1em">ЗНАК КАЧЕСТВА</text>
+      </svg>
+    </div></div>
+  </div>
+  <div class="scroll-hint">ЛИСТАЙТЕ</div>
+</section>
+
+<!-- 2. ФАКТЫ В ЦИФРАХ -->
+<section class="facts" aria-label="Факты в цифрах">
+  <div class="wrap">
+    <div class="grid4">
+      <div class="fact reveal"><span class="idx">01</span><div class="num" data-count="1970" data-plain="1">0</div><div class="lbl">Год старта производства</div></div>
+      <div class="fact reveal d1"><span class="idx">02</span><div class="num" data-count="4850000">0</div><div class="lbl">Выпущено машин семейства</div></div>
+      <div class="fact reveal d2"><span class="idx">03</span><div class="num"><span data-count="64">0</span><small>л. с.</small></div><div class="lbl">Мощность двигателя 1,2 л</div></div>
+      <div class="fact reveal d3"><span class="idx">04</span><div class="num"><span data-count="140">0</span><small>км/ч</small></div><div class="lbl">Максимальная скорость</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- 3. ИСТОРИЯ -->
+<section class="history" id="history">
+  <div class="wrap two">
+    <div class="prose">
+      <p class="kicker reveal">Глава I · История</p>
+      <h2 class="reveal">Народный автомобиль по итальянскому чертежу</h2>
+      <p class="reveal drop">В середине 1960-х Советскому Союзу был нужен массовый легковой автомобиль — не для министерств и такси, а для семей. Строить его с нуля было слишком долго, и в 1966 году СССР подписал соглашение с итальянским концерном FIAT. За основу взяли FIAT 124 — свежий «Автомобиль года в Европе» 1967 года. Но советские дороги и морозы были суровее итальянских, поэтому конструкцию переработали: по разным подсчётам, инженеры внесли в неё более 800 изменений.</p>
+      <p class="reveal">Площадку выбрали на берегу Волги, рядом с городом Тольятти. Волжский автомобильный завод объявили Всесоюзной ударной комсомольской стройкой: сюда съезжались десятки тысяч молодых рабочих со всей страны. Корпуса цехов, главный конвейер длиной более километра, новые жилые кварталы — всё росло одновременно и в рекордные сроки. Оборудование поставляли итальянские, западногерманские, французские и советские предприятия.</p>
+      <p class="reveal">19 апреля 1970 года с главного конвейера сошли первые шесть автомобилей ВАЗ-2101 «Жигули». С этого дня машина, которую в народе быстро прозвали «копейкой», начала превращаться из мечты в реальность. Очереди на неё растягивались на годы, а сама она стала символом целой эпохи — дач, дальних поездок к морю и гаражной культуры, которая жива до сих пор.</p>
+      <blockquote class="quote reveal">«Жигули» сделали личный автомобиль в СССР по-настоящему массовым — впервые машина стала частью жизни миллионов обычных семей.<cite>— из экспозиции музея</cite></blockquote>
+    </div>
+    <figure class="photo reveal d2" style="margin-top:clamp(0px,6vw,80px)">
+      <span class="tape" aria-hidden="true"></span>
+      <img src="https://commons.wikimedia.org/wiki/Special:FilePath/RIAN_archive_878967_AvtoVAZ-_Volga_automaking_plant_in_Togliatti,_the_Samara_Region.jpg?width=1200" alt="Волжский автомобильный завод в Тольятти, архивное фото" loading="lazy" onerror="fb(this)">
+      <figcaption>Волжский автомобильный завод, Тольятти. Фото: архив РИА Новости / Wikimedia Commons, CC BY-SA 3.0</figcaption>
+    </figure>
+  </div>
+</section>
+
+<!-- 4. ХРОНОЛОГИЯ -->
+<section class="chrono" id="chrono">
+  <div class="wrap">
+    <p class="kicker reveal">Глава II · Хронология</p>
+    <h2 class="reveal">Восемнадцать лет на конвейере</h2>
+    <p class="lead reveal">Листайте вниз — линия времени будет загораться вместе с вами.</p>
+    <div class="tl" id="tl">
+      <div class="tl-line"><div class="tl-fill" id="tlFill"></div></div>
+      <div class="tl-item"><div class="tl-dot"></div><div class="tl-card"><div class="tl-year">1966</div><h3>Договор с FIAT</h3><p>СССР и итальянский концерн подписывают соглашение о строительстве автозавода и выпуске автомобиля на базе FIAT 124.</p></div></div>
+      <div class="tl-item"><div class="tl-dot"></div><div class="tl-card"><div class="tl-year">1970</div><h3>Запуск производства</h3><p>19 апреля в Тольятти собраны первые шесть ВАЗ-2101. До конца года завод выпускает более 20 тысяч машин.</p></div></div>
+      <div class="tl-item"><div class="tl-dot"></div><div class="tl-card"><div class="tl-year">1971</div><h3>Начало экспорта</h3><p>«Копейка» отправляется за границу под именем Lada 1200 — её покупают в Европе и далеко за её пределами.</p></div></div>
+      <div class="tl-item"><div class="tl-dot"></div><div class="tl-card"><div class="tl-year">1974</div><h3>Миллионный автомобиль</h3><p>Волжский завод отмечает выпуск миллионного «Жигулёнка». В том же году на конвейер встаёт ВАЗ-21011 с мотором 1,3 л.</p></div></div>
+      <div class="tl-item"><div class="tl-dot"></div><div class="tl-card"><div class="tl-year">1977</div><h3>Появление ВАЗ-21013</h3><p>Модификация в кузове и отделке 21011, но с проверенным мотором 1,2 л — для тех, кому важнее простота и неприхотливость.</p></div></div>
+      <div class="tl-item"><div class="tl-dot"></div><div class="tl-card"><div class="tl-year">1988</div><h3>Завершение выпуска</h3><p>С конвейера сходят последние «копейки». Семейство выпущено тиражом около 4,85 миллиона машин.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- 5. ТЕХНИКА -->
+<section id="tech" class="blueprint" style="background-color:var(--paper)">
+  <div class="wrap">
+    <p class="kicker reveal">Глава III · Техника</p>
+    <h2 class="reveal">Простая, как молоток. Крепкая, как наковальня</h2>
+    <p class="lead reveal">Верхнеклапанный мотор, задний привод, рессор нет — только пружины. Всё обслуживается ключом на 13 и на 10 во дворе.</p>
+    <div class="two">
+      <div class="tech-photos">
+        <figure class="photo reveal">
+          <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Shiguli_1979_Motorraum.JPG?width=1200" alt="Моторный отсек ВАЗ-2101" loading="lazy" onerror="fb(this)">
+          <figcaption>Моторный отсек «Жигулей» 1979 года. Фото: Wikimedia Commons</figcaption>
+        </figure>
+        <figure class="photo reveal d1">
+          <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Lada-2101_interior.jpg?width=1200" alt="Салон ВАЗ-2101" loading="lazy" onerror="fb(this)">
+          <figcaption>Салон ВАЗ-2101: тонкий руль, металлическая панель, ничего лишнего. Фото: Wikimedia Commons</figcaption>
+        </figure>
+      </div>
+      <div class="reveal d1">
+        <table class="spec">
+          <caption>Паспорт ВАЗ-2101</caption>
+          <tr><th scope="row">Двигатель</th><td>1,2 л (1198 см³), 64 л. с., бензиновый, 4 цилиндра</td></tr>
+          <tr><th scope="row">Коробка передач</th><td>4-ступенчатая механическая</td></tr>
+          <tr><th scope="row">Привод</th><td>Задний</td></tr>
+          <tr><th scope="row">Разгон 0–100 км/ч</th><td>20 с</td></tr>
+          <tr><th scope="row">Максимальная скорость</th><td>140 км/ч</td></tr>
+          <tr><th scope="row">Расход топлива</th><td>8,5 л / 100 км</td></tr>
+          <tr><th scope="row">Длина / ширина / высота</th><td>4073 / 1611 / 1382 мм</td></tr>
+          <tr><th scope="row">Снаряжённая масса</th><td>955 кг</td></tr>
+          <tr><th scope="row">Тормоза</th><td>Передние дисковые, задние барабанные</td></tr>
+        </table>
+
+        <div class="vs">
+          <div class="vs-head"><div>Параметр</div><div>ВАЗ-2101</div><div>FIAT 124</div></div>
+          <div class="vs-row"><div>Двигатель</div><div>Новый, с верхним распредвалом, 64 л. с.</div><div>Нижневальный, около 60 л. с.</div></div>
+          <div class="vs-row"><div>Кузов</div><div>Усилен, толще металл, дополнительные элементы жёсткости</div><div>Облегчённый, под европейские дороги</div></div>
+          <div class="vs-row"><div>Клиренс</div><div>Увеличен — для грунтовок и колеи</div><div>Ниже</div></div>
+          <div class="vs-row"><div>Тормоза</div><div>Сзади барабанные — проще и надёжнее в грязи</div><div>Дисковые на всех колёсах</div></div>
+          <div class="vs-row"><div>Мелочи</div><div>Буксировочные проушины, «кривой стартер», усиленная подвеска</div><div>—</div></div>
+          <div class="vs-note">«Кривой стартер» — заводная рукоятка, которой можно было провернуть двигатель в мороз, если сел аккумулятор.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 6. МОДИФИКАЦИИ -->
+<section class="mods" id="mods">
+  <div class="wrap">
+    <p class="kicker reveal">Глава IV · Модификации</p>
+    <h2 class="reveal">Одно лицо — три характера</h2>
+    <p class="lead reveal">Снаружи их легко перепутать, но опытный «жигулист» отличит модификацию по решётке радиатора и бамперам за сто метров.</p>
+    <div class="cards3">
+      <article class="mod reveal">
+        <div class="mod-top"><div class="mod-idx">ВАЗ-2101</div><div class="mod-years">1970–1983</div></div>
+        <svg viewBox="0 0 800 340" aria-hidden="true"><use href="#car-line"/></svg>
+        <div class="mod-body">
+          <p class="mod-tag">Базовая модель</p>
+          <div class="mod-stats"><div><b>1,2 л</b><span>объём</span></div><div><b>64</b><span>л. с.</span></div><div><b>140</b><span>км/ч</span></div></div>
+          <ul>
+            <li>Хромированные бамперы с металлическими «клыками»</li>
+            <li>Две большие круглые фары и решётка с частыми хромированными брусьями</li>
+            <li>Работает на бензине А-76</li>
+          </ul>
+        </div>
+      </article>
+      <article class="mod reveal d1">
+        <div class="mod-top"><div class="mod-idx">ВАЗ-21011</div><div class="mod-years">1974–1983</div></div>
+        <svg viewBox="0 0 800 340" aria-hidden="true" style="color:var(--red)"><use href="#car-line"/></svg>
+        <div class="mod-body">
+          <p class="mod-tag">Мощнее и современнее</p>
+          <div class="mod-stats"><div><b>1,3 л</b><span>объём</span></div><div><b>69</b><span>л. с.</span></div><div><b>145</b><span>км/ч</span></div></div>
+          <ul>
+            <li>Двигатель 1,3 л с увеличенным диаметром цилиндров</li>
+            <li>Новая решётка радиатора, резиновые накладки вместо «клыков»</li>
+            <li>Вентиляционные решётки на задних стойках, улучшенная отделка салона</li>
+          </ul>
+        </div>
+      </article>
+      <article class="mod reveal d2">
+        <div class="mod-top"><div class="mod-idx">ВАЗ-21013</div><div class="mod-years">1977–1988</div></div>
+        <svg viewBox="0 0 800 340" aria-hidden="true" style="color:#8a6a1e"><use href="#car-line"/></svg>
+        <div class="mod-body">
+          <p class="mod-tag">Последняя «копейка»</p>
+          <div class="mod-stats"><div><b>1,2 л</b><span>объём</span></div><div><b>64</b><span>л. с.</span></div><div><b>140</b><span>км/ч</span></div></div>
+          <ul>
+            <li>Кузов и отделка от ВАЗ-21011</li>
+            <li>Проверенный двигатель 1,2 л от ВАЗ-2101</li>
+            <li>Выпускалась дольше всех — до 1988 года</li>
+          </ul>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- 7. ГАЛЕРЕЯ -->
+<section id="gallery">
+  <div class="wrap">
+    <p class="kicker reveal">Глава V · Галерея</p>
+    <h2 class="reveal">Семейный альбом</h2>
+    <p class="lead reveal">Нажмите на фотографию, чтобы рассмотреть её крупнее.</p>
+    <div class="gallery" id="gal">
+      <figure class="reveal"><div class="photo"><span class="num">№ 1</span>
+        <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Moscow_car_show_2025-08-03_VAZ-2101_red_01.jpg?width=900" data-full="https://commons.wikimedia.org/wiki/Special:FilePath/Moscow_car_show_2025-08-03_VAZ-2101_red_01.jpg?width=1800" alt="Красный ВАЗ-2101" loading="lazy" onerror="fb(this)">
+        <figcaption>Красная «копейка» — самый узнаваемый цвет эпохи</figcaption></div></figure>
+      <figure class="reveal d1"><div class="photo"><span class="num">№ 2</span>
+        <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Moscow_car_show_2025-08-03_VAZ-2101_white_02.jpg?width=900" data-full="https://commons.wikimedia.org/wiki/Special:FilePath/Moscow_car_show_2025-08-03_VAZ-2101_white_02.jpg?width=1800" alt="Белый ВАЗ-2101" loading="lazy" onerror="fb(this)">
+        <figcaption>Белая — как с конвейера в 1970-м</figcaption></div></figure>
+      <figure class="reveal d2"><div class="photo"><span class="num">№ 3</span>
+        <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Штормовое_Сакского_района,_май_2022,_23.jpg?width=900" data-full="https://commons.wikimedia.org/wiki/Special:FilePath/Штормовое_Сакского_района,_май_2022,_23.jpg?width=1800" alt="ВАЗ-2101 в селе" loading="lazy" onerror="fb(this)">
+        <figcaption>В селе: «копейка» по-прежнему в строю</figcaption></div></figure>
+      <figure class="reveal"><div class="photo"><span class="num">№ 4</span>
+        <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Conveyor_system_of_AvtoVAZ.jpg?width=900" data-full="https://commons.wikimedia.org/wiki/Special:FilePath/Conveyor_system_of_AvtoVAZ.jpg?width=1800" alt="Конвейер АвтоВАЗа" loading="lazy" onerror="fb(this)">
+        <figcaption>На заводе: конвейер АвтоВАЗа в Тольятти</figcaption></div></figure>
+      <figure class="reveal d1" data-poster="1"><div class="photo"><span class="num">№ 5</span>
+        <div class="poster" role="img" aria-label="Рекламный плакат Lada 1200, 1972 год, стилизация">
+          <div class="p1">LADA 1200<small>«ЖИГУЛИ» · ВАЗ-2101</small></div>
+          <svg viewBox="0 0 800 340" aria-hidden="true"><use href="#car-line"/></svg>
+          <div class="p2"><span>Надёжна в любом климате</span><span>1972</span></div>
+        </div>
+        <figcaption>Реклама 1972 года — стилизация под экспортные буклеты «Внешторгрекламы»</figcaption></div></figure>
+      <figure class="reveal d2"><div class="photo"><span class="num">№ 6</span>
+        <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Moscow_car_meet_2025-07-12_VAZ-2101_01.jpg?width=900" data-full="https://commons.wikimedia.org/wiki/Special:FilePath/Moscow_car_meet_2025-07-12_VAZ-2101_01.jpg?width=1800" alt="Отреставрированный ВАЗ-2101" loading="lazy" onerror="fb(this)">
+        <figcaption>Отреставрированная: вторая жизнь на встрече ретроавтомобилей</figcaption></div></figure>
+    </div>
+  </div>
+</section>
+
+<div class="lb" id="lb" role="dialog" aria-modal="true" aria-label="Просмотр фотографии">
+  <button type="button" id="lbClose" aria-label="Закрыть">×</button>
+  <img id="lbImg" alt="">
+  <p id="lbCap"></p>
+</div>
+
+<!-- 8. ЛЕГЕНДЫ И ФАКТЫ -->
+<section id="legends" style="background:var(--paper-2)">
+  <div class="wrap">
+    <p class="kicker reveal">Глава VI · Легенды и факты</p>
+    <h2 class="reveal">Что знает каждый гаражный кооператив</h2>
+    <div class="legend-grid">
+      <div class="legend reveal">
+        <div class="ico"><svg viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="2.4"><circle cx="20" cy="20" r="17"/><circle cx="20" cy="20" r="12.5" stroke-dasharray="2 2.4"/><text x="20" y="26" text-anchor="middle" fill="currentColor" stroke="none" style="font:400 17px 'Russo One',sans-serif">1</text></svg></div>
+        <div><h3>Почему «Копейка»?</h3><p>Индекс модели заканчивается на единицу — «2101», первая машина завода. А единица в народном счёте — это копейка, самая маленькая монета. Так за первенцем ВАЗа и закрепилось ласковое прозвище.</p></div>
+      </div>
+      <div class="legend reveal d1">
+        <div class="ico"><svg viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M26 6a8 8 0 0 0-9.6 10.2L6 26.6 13.4 34l10.4-10.4A8 8 0 0 0 34 14l-5 5-5-2-2-5 5-5z"/></svg></div>
+        <div><h3>Самый живучий советский автомобиль</h3><p>С момента выпуска последних машин прошло почти сорок лет, а «копейки» до сих пор ездят по дорогам России и бывших республик СССР. Секрет — в простоте: почти любую поломку можно устранить в гараже своими руками.</p></div>
+      </div>
+      <div class="legend reveal">
+        <div class="ico"><svg viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="2.4"><circle cx="20" cy="20" r="16"/><path d="M4 20h32M20 4c-6 5-6 27 0 32M20 4c6 5 6 27 0 32M7 11h26M7 29h26"/></svg></div>
+        <div><h3>Lada 1200 для 30 стран</h3><p>На экспорт машина шла под именем Lada 1200. Её продавали примерно в 30 странах — от Финляндии и Великобритании до Канады. Для иностранцев она стала символом недорогого, но очень выносливого автомобиля.</p></div>
+      </div>
+      <div class="legend reveal d1">
+        <div class="ico"><svg viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round"><path d="M14 34V6h9a7 7 0 0 1 0 14h-13M10 27h14"/></svg></div>
+        <div><h3>5500 рублей в 1970 году</h3><p>Столько стоила новая «копейка» — около 45 средних месячных зарплат. Деньги копили годами, а саму машину ждали в очереди, часто — через профсоюз на предприятии.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 9. ЗАВЕДИ КОПЕЙКУ -->
+<section class="ignite" id="ignite">
+  <div class="wrap">
+    <span class="exhibit-label reveal" style="color:var(--ochre)">Интерактивный экспонат № 1</span>
+    <h2 class="reveal">Заведи копейку</h2>
+    <p class="lead reveal">Поверните ключ, послушайте мотор и включите фары. Звук синтезируется прямо в браузере — включите динамики.</p>
+    <div class="ign-grid">
+      <div class="reveal">
+        <div class="dash-wrap">
+          <svg id="dash" viewBox="0 0 600 270" role="img" aria-label="Панель приборов ВАЗ-2101">
+            <defs>
+              <radialGradient id="face" cx="50%" cy="40%" r="60%"><stop offset="0" stop-color="#1d1c1a"/><stop offset="1" stop-color="#080807"/></radialGradient>
+              <linearGradient id="chrome" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#f4f4f0"/><stop offset=".45" stop-color="#8d8d88"/><stop offset=".55" stop-color="#5c5c58"/><stop offset="1" stop-color="#d9d9d4"/></linearGradient>
+              <radialGradient id="bl" cx="50%" cy="50%" r="50%"><stop offset="0" stop-color="#9fdc9a" stop-opacity=".55"/><stop offset="1" stop-color="#9fdc9a" stop-opacity="0"/></radialGradient>
+            </defs>
+            <rect x="4" y="8" width="592" height="256" rx="22" fill="#0e0e0d" stroke="#3b3a35" stroke-width="2"/>
+            <!-- Тахометр -->
+            <circle cx="158" cy="138" r="112" fill="url(#chrome)"/>
+            <circle cx="158" cy="138" r="104" fill="url(#face)"/>
+            <circle class="backlight" cx="158" cy="138" r="100" fill="url(#bl)"/>
+            <path id="redzone" fill="none" stroke="#C14A2B" stroke-width="9"/>
+            <g id="gT"></g>
+            <text x="158" y="185" text-anchor="middle" class="lab" style="font-size:11px;opacity:.7">об/мин × 1000</text>
+            <g id="nT" class="needle"><path d="M155.5 152 L158 52 L160.5 152 Z" fill="#ff7a3c"/></g>
+            <circle cx="158" cy="138" r="11" fill="#2a2a28" stroke="#666" />
+            <!-- Спидометр -->
+            <circle cx="442" cy="138" r="112" fill="url(#chrome)"/>
+            <circle cx="442" cy="138" r="104" fill="url(#face)"/>
+            <circle class="backlight" cx="442" cy="138" r="100" fill="url(#bl)"/>
+            <g id="gS"></g>
+            <text x="442" y="172" text-anchor="middle" class="lab" style="font-size:12px;opacity:.7">км/ч</text>
+            <rect x="404" y="182" width="76" height="20" rx="2" fill="#000" stroke="#555"/>
+            <text id="odo" x="442" y="197" text-anchor="middle" style="font:15px 'PT Mono',monospace;fill:#eee6d2;letter-spacing:2px">048512</text>
+            <g id="nS" class="needle"><path d="M439.5 152 L442 52 L444.5 152 Z" fill="#ff7a3c"/></g>
+            <circle cx="442" cy="138" r="11" fill="#2a2a28" stroke="#666"/>
+            <!-- Контрольные лампы -->
+            <g transform="translate(300 64)">
+              <g class="lamp l-bat"><circle r="15" fill="#e0331c"/><rect x="-8" y="-5" width="16" height="11" rx="1" fill="none" stroke="#fff" stroke-width="2"/><path d="M-5 -8v3M5 -8v3M-5 1h3M3 1h4M5 -1v4" stroke="#fff" stroke-width="1.6"/></g>
+              <g class="lamp l-oil" transform="translate(0 42)"><circle r="15" fill="#e0331c"/><path d="M-9 4h12l6-6-6 1-3-3h-6l-3 3z M-9 4v-5" fill="none" stroke="#fff" stroke-width="1.8" stroke-linejoin="round"/><circle cx="9" cy="5" r="1.6" fill="#fff"/></g>
+              <g class="lamp l-park" transform="translate(0 84)"><circle r="15" fill="#3fbf4a"/><path d="M-2 -7a7 7 0 0 1 0 14z" fill="#fff"/><path d="M-5 -6h-5M-5 -2h-5M-5 2h-5M-5 6h-5" stroke="#fff" stroke-width="1.6"/></g>
+              <text y="122" text-anchor="middle" style="font:10px 'PT Mono',monospace;fill:#8d877a;letter-spacing:1px">ВАЗ</text>
+            </g>
+          </svg>
+        </div>
+        <div class="ign-controls">
+          <svg class="keylock" viewBox="0 0 100 100" aria-hidden="true">
+            <circle cx="50" cy="50" r="46" fill="url(#chrome)"/>
+            <circle cx="50" cy="50" r="38" fill="#1a1a18"/>
+            <text x="50" y="18" text-anchor="middle" style="font:9px 'PT Mono',monospace;fill:#eee6d2">0</text>
+            <text x="76" y="28" text-anchor="middle" style="font:9px 'PT Mono',monospace;fill:#eee6d2">I</text>
+            <text x="85" y="54" text-anchor="middle" style="font:9px 'PT Mono',monospace;fill:#D9A441">II</text>
+            <g id="key" data-pos="off">
+              <rect x="45" y="20" width="10" height="60" rx="3" fill="#cfcfc8" stroke="#777"/>
+              <rect x="40" y="10" width="20" height="22" rx="6" fill="#2a2a28" stroke="#555"/>
+              <circle cx="50" cy="50" r="6" fill="#999"/>
+            </g>
+          </svg>
+          <div class="ign-btns">
+            <button class="btn red" id="startBtn" type="button">Завести двигатель</button>
+            <button class="btn ghost" id="revBtn" type="button" disabled>Газануть</button>
+          </div>
+        </div>
+        <div class="ign-msg" id="ignMsg" aria-live="polite"></div>
+        <p class="ign-note">На серийной ВАЗ-2101 тахометра не было — его ставили на ВАЗ-2103. Здесь он добавлен для наглядности.</p>
+      </div>
+
+      <div class="front-wrap reveal d1">
+        <div class="cap">Вид спереди · две круглые фары</div>
+        <svg id="front" viewBox="0 0 440 290" role="img" aria-label="ВАЗ-2101, вид спереди">
+          <defs>
+            <linearGradient id="bodyW" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#fbf8f0"/><stop offset=".6" stop-color="#e6e1d3"/><stop offset="1" stop-color="#b9b3a4"/></linearGradient>
+            <linearGradient id="glass" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#6d8a86"/><stop offset=".5" stop-color="#22302f"/><stop offset="1" stop-color="#3b4f4c"/></linearGradient>
+            <radialGradient id="lensG" cx="40%" cy="35%" r="70%"><stop offset="0" stop-color="#e9efe9"/><stop offset="1" stop-color="#7d8984"/></radialGradient>
+            <radialGradient id="glowG"><stop offset="0" stop-color="#fff6c8" stop-opacity="1"/><stop offset=".25" stop-color="#ffd76a" stop-opacity=".8"/><stop offset="1" stop-color="#ffb52e" stop-opacity="0"/></radialGradient>
+            <linearGradient id="beamG" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#ffe9a0" stop-opacity=".6"/><stop offset="1" stop-color="#ffe9a0" stop-opacity="0"/></linearGradient>
+          </defs>
+          <ellipse cx="220" cy="262" rx="200" ry="12" fill="#000" opacity=".5"/>
+          <g class="beam">
+            <path d="M90 167 L0 290 L190 290 Z" fill="url(#beamG)"/>
+            <path d="M350 167 L250 290 L440 290 Z" fill="url(#beamG)"/>
+          </g>
+          <rect x="58" y="222" width="50" height="38" rx="8" fill="#151515"/>
+          <rect x="332" y="222" width="50" height="38" rx="8" fill="#151515"/>
+          <path d="M100 36 Q104 24 118 24 L322 24 Q336 24 340 36 L372 114 L68 114 Z" fill="url(#bodyW)"/>
+          <path d="M116 38 L324 38 L352 108 L88 108 Z" fill="url(#glass)"/>
+          <path d="M130 44 L200 44 L150 104 L110 104 Z" fill="#fff" opacity=".08"/>
+          <rect x="50" y="94" width="20" height="12" rx="3" fill="#2a2a28"/>
+          <path d="M44 122 Q44 112 60 112 L380 112 Q396 112 396 122 L400 222 Q401 236 388 236 L52 236 Q39 236 40 222 Z" fill="url(#bodyW)"/>
+          <path d="M70 114 L86 134 L354 134 L370 114" fill="none" stroke="#a9a393" stroke-width="1.5"/>
+          <path d="M46 140 H394" stroke="#cfc8b7" stroke-width="1"/>
+          <!-- Решётка: частые хромированные брусья во всю ширину между фарами -->
+          <rect x="124" y="146" width="192" height="42" rx="3" fill="#141414"/>
+          <g stroke="url(#chrome)" stroke-width="2.2">
+            <path d="M126 150.5H314M126 155H314M126 159.5H314M126 164H314M126 168.5H314M126 173H314M126 177.5H314M126 182H314"/>
+          </g>
+          <rect x="124" y="146" width="192" height="42" rx="3" fill="none" stroke="url(#chrome)" stroke-width="3.5"/>
+          <!-- Значок с ладьёй -->
+          <path d="M213 156 h14 v10 q0 7 -7 10 q-7 -3 -7 -10 z" fill="#1d1d1d" stroke="url(#chrome)" stroke-width="1.6"/>
+          <path d="M216 167 h8 l-1.5 3 h-5 z M220 158 v9 M220 159 l3.5 5 h-3.5" fill="#c9c9c3" stroke="#c9c9c3" stroke-width=".8"/>
+          <!-- Фары -->
+          <g>
+            <circle class="glow" cx="90" cy="167" r="84" fill="url(#glowG)"/>
+            <circle class="glow" cx="350" cy="167" r="84" fill="url(#glowG)"/>
+          </g>
+          <circle cx="90" cy="167" r="29" fill="url(#chrome)"/>
+          <circle cx="350" cy="167" r="29" fill="url(#chrome)"/>
+          <circle cx="90" cy="167" r="25.5" fill="#2a2a28"/>
+          <circle cx="350" cy="167" r="25.5" fill="#2a2a28"/>
+          <circle class="lens" cx="90" cy="167" r="24" fill="url(#lensG)"/>
+          <circle class="lens" cx="350" cy="167" r="24" fill="url(#lensG)"/>
+          <g fill="none" stroke="#fff" stroke-width="1" opacity=".4">
+            <circle cx="90" cy="167" r="13"/><circle cx="350" cy="167" r="13"/>
+            <path d="M68 161H112M68 173H112M328 161H372M328 173H372"/>
+          </g>
+          <path d="M76 152 q8 -6 18 -4" stroke="#fff" stroke-width="2.5" fill="none" opacity=".6" stroke-linecap="round"/>
+          <path d="M336 152 q8 -6 18 -4" stroke="#fff" stroke-width="2.5" fill="none" opacity=".6" stroke-linecap="round"/>
+          <!-- Подфарники под фарами -->
+          <rect x="72" y="200" width="34" height="11" rx="1.5" fill="#f1efe6" stroke="url(#chrome)" stroke-width="1.6"/>
+          <rect x="334" y="200" width="34" height="11" rx="1.5" fill="#f1efe6" stroke="url(#chrome)" stroke-width="1.6"/>
+          <!-- Тонкий хромированный бампер -->
+          <path d="M26 214 Q26 211 30 211 L410 211 Q414 211 414 214 L412 221 Q411 224 406 224 L34 224 Q29 224 28 221 Z" fill="url(#chrome)"/>
+          <path d="M30 213 H410" stroke="#fff" stroke-width="1" opacity=".7"/>
+        </svg>
+        <button class="btn ghost" id="lightBtn" type="button" aria-pressed="false">Включить свет</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 10. КАЛЬКУЛЯТОР -->
+<section id="calc">
+  <div class="wrap">
+    <span class="exhibit-label reveal" style="color:var(--red)">Интерактивный экспонат № 2</span>
+    <h2 class="reveal">Сколько стоила копейка на сегодняшние деньги?</h2>
+    <p class="lead reveal">Введите свою зарплату — и узнаем, сколько месяцев вам пришлось бы работать на машину тогда и сейчас.</p>
+    <div class="calc-box reveal">
+      <div>
+        <label class="field" for="salary">Ваша зарплата в месяц</label>
+        <div class="inp"><input id="salary" type="number" inputmode="numeric" min="1000" step="1000" value="90000" aria-describedby="calcNote"><span>₽</span></div>
+        <div class="presets" aria-label="Быстрый выбор">
+          <button type="button" data-v="40000">40 000</button>
+          <button type="button" data-v="70000">70 000</button>
+          <button type="button" data-v="100000">100 000</button>
+          <button type="button" data-v="200000">200 000</button>
+        </div>
+        <ul class="given">
+          <li><span>ВАЗ-2101 в 1970 году</span><b>5500 руб.</b></li>
+          <li><span>Средняя зарплата в 1970 году</span><b>122 руб.</b></li>
+          <li><span>Новая Lada Granta в 2026 году</span><b>1 100 000 руб.</b></li>
+        </ul>
+      </div>
+      <div>
+        <div class="bar-row">
+          <div class="bl"><span>1970 · ВАЗ-2101</span><b id="m70">45 зарплат</b></div>
+          <div class="bar b70"><i id="bar70"></i></div>
+        </div>
+        <div class="bar-row">
+          <div class="bl"><span>2026 · Lada Granta</span><b id="m26">—</b></div>
+          <div class="bar b26"><i id="bar26"></i></div>
+        </div>
+        <div class="verdict" id="verdict" aria-live="polite">—</div>
+        <p class="calc-note" id="calcNote">Расчёт условный: без учёта инфляции, дефицита и очередей. В 1970-м деньги на «копейку» были полдела — её ещё нужно было дождаться.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 11. СРАВНЕНИЕ -->
+<section class="cmp" id="compare">
+  <div class="wrap">
+    <span class="exhibit-label reveal" style="color:var(--green)">Интерактивный экспонат № 3</span>
+    <h2 class="reveal">Копейка против современности</h2>
+    <p class="lead reveal">Переключайте автомобили — серые полоски показывают соперников, красная — выбранную машину.</p>
+    <div class="reveal">
+      <div class="tabs" role="tablist" aria-label="Выбор автомобиля">
+        <button class="tab" role="tab" aria-selected="true" data-car="0" type="button">ВАЗ-2101<small>1970</small></button>
+        <button class="tab" role="tab" aria-selected="false" data-car="1" type="button">Lada Granta<small>2025</small></button>
+        <button class="tab" role="tab" aria-selected="false" data-car="2" type="button">Tesla Model 3<small>2025</small></button>
+      </div>
+      <div class="cmp-table" id="cmpTable" role="tabpanel"></div>
+      <div class="cmp-legend"><span>Данные округлены, по открытым источникам производителей.</span><span>Granta — 1,6 л, 90 л. с., механика. Tesla — версия с задним приводом.</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- 12. ДО / ПОСЛЕ -->
+<section id="restore">
+  <div class="wrap">
+    <span class="exhibit-label reveal" style="color:var(--red)">Интерактивный экспонат № 4</span>
+    <h2 class="reveal">Из сарая — в музей</h2>
+    <p class="lead reveal">Двигайте ползунок пальцем или мышью: слева — «копейка» после тридцати лет под открытым небом, справа — после полной реставрации.</p>
+    <div class="ba reveal" id="ba" tabindex="0" role="slider" aria-label="Сравнение до и после реставрации" aria-valuemin="0" aria-valuemax="100" aria-valuenow="50">
+      <svg viewBox="0 0 800 380" aria-hidden="true" style="visibility:hidden"><rect width="800" height="380"/></svg>
+      <!-- ПОСЛЕ -->
+      <div class="after">
+        <svg viewBox="0 0 800 380" preserveAspectRatio="xMidYMid slice">
+          <defs>
+            <linearGradient id="sky2" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#e9dfc6"/><stop offset="1" stop-color="#d8c9a6"/></linearGradient>
+            <linearGradient id="red2" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#e2513a"/><stop offset=".45" stop-color="#b8261b"/><stop offset="1" stop-color="#7a140f"/></linearGradient>
+            <linearGradient id="gl2" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#9fb7b3"/><stop offset=".55" stop-color="#2c3a39"/><stop offset="1" stop-color="#4f6562"/></linearGradient>
+          </defs>
+          <rect width="800" height="380" fill="url(#sky2)"/>
+          <g stroke="rgba(46,75,63,.12)"><path d="M0 60H800M0 120H800M0 180H800M0 240H800M100 0V320M200 0V320M300 0V320M400 0V320M500 0V320M600 0V320M700 0V320"/></g>
+          <rect y="320" width="800" height="60" fill="#bfae86"/>
+          <path d="M0 320H800" stroke="#1A1A1A" stroke-width="2"/>
+          <g transform="translate(0 22)">
+            <ellipse cx="400" cy="312" rx="350" ry="12" fill="#000" opacity=".35"/>
+            <path d="M58 250 L60 214 Q62 197 84 194 L246 187 L298 134 Q308 124 330 123 L522 123 Q542 124 554 134 L612 187 L726 191 Q746 193 747 212 L749 250 Q749 263 735 263 L668 263 A58 58 0 0 0 552 263 L248 263 A58 58 0 0 0 132 263 L72 263 Q58 263 58 250 Z" fill="url(#red2)" stroke="#4d0c08" stroke-width="2"/>
+            <path d="M84 198 L246 191 L300 138 Q309 129 330 128 L520 128 Q538 129 550 138 L608 191 L724 195" fill="none" stroke="#fff" stroke-opacity=".45" stroke-width="3"/>
+            <path d="M266 184 L310 139 Q317 132 330 132 L414 132 L414 184 Z M424 132 L518 132 Q532 132 541 142 L585 184 L424 184 Z" fill="url(#gl2)" stroke="#d9d9d4" stroke-width="3"/>
+            <path d="M320 140 L360 140 L330 180 L296 180 Z" fill="#fff" opacity=".18"/>
+            <path d="M262 190 L258 256 M418 188 L418 256 M564 190 L556 236" stroke="#5b0f0a" stroke-width="2" fill="none"/>
+            <path d="M70 222 L740 222" stroke="#e8e8e2" stroke-width="4"/>
+            <rect x="372" y="198" width="28" height="6" rx="2" fill="#e8e8e2"/><rect x="514" y="198" width="28" height="6" rx="2" fill="#e8e8e2"/>
+            <rect x="56" y="202" width="9" height="18" rx="2" fill="#fff6c8" stroke="#ccc"/>
+            <rect x="740" y="198" width="8" height="22" rx="2" fill="#ff3b22"/>
+            <rect x="46" y="236" width="52" height="10" rx="4" fill="url(#chrome)"/><rect x="710" y="236" width="48" height="10" rx="4" fill="url(#chrome)"/>
+            <rect x="276" y="174" width="14" height="10" rx="2" fill="#d9d9d4"/>
+            <g><circle cx="190" cy="268" r="46" fill="#161616"/><circle cx="190" cy="268" r="30" fill="url(#chrome)"/><circle cx="190" cy="268" r="9" fill="#555"/></g>
+            <g><circle cx="610" cy="268" r="46" fill="#161616"/><circle cx="610" cy="268" r="30" fill="url(#chrome)"/><circle cx="610" cy="268" r="9" fill="#555"/></g>
+          </g>
+          <g fill="#D9A441" opacity=".9"><path d="M150 70l4 10 10 4-10 4-4 10-4-10-10-4 10-4z"/><path d="M640 90l3 7 7 3-7 3-3 7-3-7-7-3 7-3z"/></g>
+        </svg>
+      </div>
+      <!-- ДО -->
+      <div class="before">
+        <svg viewBox="0 0 800 380" preserveAspectRatio="xMidYMid slice">
+          <defs>
+            <filter id="rust" x="0" y="0" width="100%" height="100%">
+              <feTurbulence type="fractalNoise" baseFrequency=".018 .03" numOctaves="4" seed="7"/>
+              <feColorMatrix values="0 0 0 0 .5  0 0 0 0 .22  0 0 0 0 .08  3.4 0 0 0 -1.45"/>
+            </filter>
+            <filter id="rust2" x="0" y="0" width="100%" height="100%">
+              <feTurbulence type="fractalNoise" baseFrequency=".09" numOctaves="2" seed="3"/>
+              <feColorMatrix values="0 0 0 0 .32  0 0 0 0 .14  0 0 0 0 .05  4 0 0 0 -2.2"/>
+            </filter>
+            <clipPath id="bodyClip"><path d="M58 250 L60 214 Q62 197 84 194 L246 187 L298 134 Q308 124 330 123 L522 123 Q542 124 554 134 L612 187 L726 191 Q746 193 747 212 L749 250 Q749 263 735 263 L668 263 A58 58 0 0 0 552 263 L248 263 A58 58 0 0 0 132 263 L72 263 Q58 263 58 250 Z"/></clipPath>
+          </defs>
+          <rect width="800" height="380" fill="#a99b7c"/>
+          <rect width="800" height="380" fill="#6b5e45" opacity=".35"/>
+          <rect y="320" width="800" height="60" fill="#5f5638"/>
+          <g transform="translate(0 30) rotate(1.2 400 260)">
+            <ellipse cx="400" cy="306" rx="350" ry="10" fill="#000" opacity=".4"/>
+            <path d="M58 250 L60 214 Q62 197 84 194 L246 187 L298 134 Q308 124 330 123 L522 123 Q542 124 554 134 L612 187 L726 191 Q746 193 747 212 L749 250 Q749 263 735 263 L668 263 A58 58 0 0 0 552 263 L248 263 A58 58 0 0 0 132 263 L72 263 Q58 263 58 250 Z" fill="#9c8f80" stroke="#3b2c1f" stroke-width="2"/>
+            <g clip-path="url(#bodyClip)">
+              <rect width="800" height="300" filter="url(#rust)"/>
+              <rect width="800" height="300" filter="url(#rust2)"/>
+              <rect x="40" y="225" width="720" height="45" fill="#6e3a17" opacity=".55"/>
+            </g>
+            <path d="M266 184 L310 139 Q317 132 330 132 L414 132 L414 184 Z M424 132 L518 132 Q532 132 541 142 L585 184 L424 184 Z" fill="#3c3a30" opacity=".85" stroke="#5a4a38" stroke-width="3"/>
+            <path d="M340 140 L360 160 L352 176 M360 160 L392 150 M360 160 L372 182 M470 140 L488 170" stroke="#b9b29c" stroke-width="1.4" fill="none"/>
+            <path d="M262 190 L258 256 M418 188 L418 256 M564 190 L556 236" stroke="#3b2c1f" stroke-width="2" fill="none"/>
+            <path d="M70 222 L230 222 M300 222 L520 222" stroke="#7d7466" stroke-width="3"/>
+            <path d="M520 222 Q560 236 590 250" stroke="#7d7466" stroke-width="3" fill="none"/>
+            <rect x="56" y="202" width="9" height="18" rx="2" fill="#3a3630"/>
+            <rect x="740" y="198" width="8" height="22" rx="2" fill="#5a2a1f"/>
+            <rect x="46" y="240" width="52" height="10" rx="4" fill="#6b5a4a" transform="rotate(4 72 245)"/>
+            <rect x="710" y="236" width="48" height="10" rx="4" fill="#5e4d3e"/>
+            <g><ellipse cx="190" cy="276" rx="48" ry="38" fill="#232120"/><circle cx="190" cy="270" r="27" fill="#6a4026"/><circle cx="190" cy="270" r="9" fill="#3b2a1d"/></g>
+            <g><circle cx="610" cy="268" r="46" fill="#232120"/><circle cx="610" cy="268" r="28" fill="#5c3b26"/><circle cx="610" cy="268" r="9" fill="#2e2219"/></g>
+          </g>
+          <g stroke="#4d5a2a" stroke-width="3" stroke-linecap="round" fill="none">
+            <path d="M120 340 q4 -30 -6 -46 M130 340 q6 -24 14 -40 M140 340 q-2 -20 -14 -32 M560 340 q2 -28 -8 -44 M572 340 q8 -22 18 -36 M584 340 q-4 -18 -16 -28 M300 340 q2 -16 -6 -26 M690 340 q4 -20 12 -30 M40 340 q0 -22 -8 -30 M760 340 q2 -26 12 -38"/>
+          </g>
+          <g stroke="#7a6a3a" stroke-width="2" fill="none" opacity=".8"><path d="M200 340 q4 -20 -2 -30 M440 340 q4 -14 10 -22 M650 340 q-4 -18 -12 -24"/></g>
+        </svg>
+      </div>
+      <span class="tagl">До · 30 лет под открытым небом</span>
+      <span class="tagr">После · реставрация</span>
+      <div class="handle" id="baHandle"><div class="knob" aria-hidden="true">⇆</div></div>
+    </div>
+    <p class="ba-hint">Потяните ползунок · на клавиатуре — стрелки ← →</p>
+    <div class="ba-notes">
+      <div class="reveal"><b>Что съедает «копейку»</b>Пороги, низ дверей, колёсные арки и днище — металл там гниёт первым. Плюс трещины на стёклах, рассохшаяся резина и потерянные колпаки.</div>
+      <div class="reveal d1"><b>Что возвращает реставрация</b>Кузовной ремонт с заменой порогов, заводской цвет, перехромированные бамперы и молдинги, оригинальные колпаки «с ВАЗовской ладьёй».</div>
+    </div>
+  </div>
+</section>
+
+<!-- 13. FOOTER -->
+<footer>
+  <div class="wrap">
+    <div>
+      <div class="big">Копейка<br>едет дальше</div>
+      <p>Сайт создан в рамках документального проекта. Материалы собраны из открытых архивов и журналов «За рулём». 2026</p>
+      <p class="credits">Фотографии: Wikimedia Commons (лицензии Creative Commons, авторы указаны на страницах файлов). Иллюстрации, панель приборов и звук двигателя созданы средствами браузера.</p>
+    </div>
+    <div class="end">
+      <a class="btn" href="#hero">↑ Наверх</a>
+    </div>
+  </div>
+</footer>
+
+<button class="to-top" id="toTop" type="button" aria-label="Наверх">↑</button>
+
+<script>
+(function(){
+  'use strict';
+  var $ = function(s, c){ return (c || document).querySelector(s); };
+  var $$ = function(s, c){ return Array.prototype.slice.call((c || document).querySelectorAll(s)); };
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var nf = new Intl.NumberFormat('ru-RU');
+  var nf1 = new Intl.NumberFormat('ru-RU', {maximumFractionDigits: 1});
+
+  /* ---------- Появление при скролле + счётчики ---------- */
+  function countUp(el){
+    var to = +el.dataset.count, plain = el.dataset.plain, t0 = null, dur = 1600;
+    function step(t){
+      if (!t0) t0 = t;
+      var p = Math.min(1, (t - t0) / dur), e = 1 - Math.pow(1 - p, 3), v = Math.round(to * e);
+      el.textContent = plain ? v : nf.format(v);
+      if (p < 1) requestAnimationFrame(step);
+    }
+    if (reduce) { el.textContent = plain ? to : nf.format(to); return; }
+    requestAnimationFrame(step);
+  }
+  if ('IntersectionObserver' in window) {
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if (!e.isIntersecting) return;
+        e.target.classList.add('in');
+        $$('[data-count]', e.target).forEach(countUp);
+        io.unobserve(e.target);
+      });
+    }, {threshold: .12, rootMargin: '0px 0px -40px 0px'});
+    $$('.reveal, .fact').forEach(function(el){ io.observe(el); });
+  } else {
+    $$('.reveal').forEach(function(el){ el.classList.add('in'); });
+    $$('[data-count]').forEach(countUp);
+  }
+
+  /* ---------- Скролл: параллакс, шапка, таймлайн ---------- */
+  var heroBg = $('#heroBg'), heroPhoto = $('#heroPhoto'), top = $('#top'), toTop = $('#toTop');
+  var tl = $('#tl'), tlFill = $('#tlFill'), tlItems = $$('.tl-item');
+  var navLinks = $$('.top nav a'), secs = navLinks.map(function(a){ return $(a.getAttribute('href')); });
+  var ticking = false;
+  function onScroll(){
+    var y = window.scrollY, h = window.innerHeight;
+    if (!reduce && y < h * 1.2) {
+      heroBg.style.transform = 'translate3d(0,' + (y * 0.35) + 'px,0)';
+      heroPhoto.style.transform = 'translate3d(0,' + (y * -0.12) + 'px,0)';
+    }
+    top.classList.toggle('show', y > h * 0.7);
+    toTop.classList.toggle('show', y > h * 1.5);
+    // таймлайн
+    var r = tl.getBoundingClientRect(), mid = h * 0.6;
+    var p = Math.max(0, Math.min(1, (mid - r.top) / r.height));
+    tlFill.style.height = (p * 100) + '%';
+    tlItems.forEach(function(it){
+      var dot = it.querySelector('.tl-dot').getBoundingClientRect();
+      it.classList.toggle('on', dot.top + dot.height / 2 < mid);
+    });
+    // активный пункт меню
+    var cur = -1;
+    secs.forEach(function(s, i){ if (s && s.getBoundingClientRect().top < h * 0.4) cur = i; });
+    navLinks.forEach(function(a, i){ a.classList.toggle('cur', i === cur); });
+    ticking = false;
+  }
+  window.addEventListener('scroll', function(){ if (!ticking) { ticking = true; requestAnimationFrame(onScroll); } }, {passive: true});
+  window.addEventListener('resize', onScroll);
+  onScroll();
+  toTop.addEventListener('click', function(){ window.scrollTo({top: 0, behavior: reduce ? 'auto' : 'smooth'}); });
+
+  /* ---------- Галерея: лайтбокс ---------- */
+  var lb = $('#lb'), lbImg = $('#lbImg'), lbCap = $('#lbCap');
+  $$('#gal figure').forEach(function(f){
+    f.addEventListener('click', function(){
+      var img = f.querySelector('img');
+      if (!img) return; // плакат и заглушки не открываем
+      lbImg.src = img.dataset.full || img.src;
+      lbImg.alt = img.alt;
+      lbCap.textContent = f.querySelector('figcaption').textContent;
+      lb.classList.add('open');
+    });
+  });
+  function closeLb(){ lb.classList.remove('open'); }
+  lb.addEventListener('click', function(e){ if (e.target !== lbImg) closeLb(); });
+  document.addEventListener('keydown', function(e){ if (e.key === 'Escape') closeLb(); });
+
+  /* ---------- Панель приборов ---------- */
+  var SVGNS = 'http://www.w3.org/2000/svg';
+  function polar(cx, cy, r, frac){
+    var a = (-135 + 270 * frac) * Math.PI / 180;
+    return [cx + Math.sin(a) * r, cy - Math.cos(a) * r];
+  }
+  function buildGauge(id, cx, cy, r, max, major, minors, label){
+    var g = document.getElementById(id), html = '', stepV = major / minors;
+    for (var v = 0; v <= max + 1e-6; v += stepV) {
+      var frac = v / max, isMaj = Math.abs(v / major - Math.round(v / major)) < 1e-6;
+      var p1 = polar(cx, cy, r, frac), p2 = polar(cx, cy, r - (isMaj ? 14 : 7), frac);
+      html += '<line class="tick" x1="' + p1[0].toFixed(1) + '" y1="' + p1[1].toFixed(1) + '" x2="' + p2[0].toFixed(1) + '" y2="' + p2[1].toFixed(1) + '" stroke-width="' + (isMaj ? 3 : 1.4) + '"/>';
+      if (isMaj) {
+        var pl = polar(cx, cy, r - 30, frac);
+        html += '<text class="lab" x="' + pl[0].toFixed(1) + '" y="' + (pl[1] + 5).toFixed(1) + '" text-anchor="middle">' + label(v) + '</text>';
+      }
+    }
+    g.innerHTML = html;
+  }
+  buildGauge('gT', 158, 138, 96, 8, 1, 4, function(v){ return v; });
+  buildGauge('gS', 442, 138, 96, 180, 20, 2, function(v){ return v; });
+  (function(){ // красная зона 6000–8000
+    var a = polar(158, 138, 90, 6/8), b = polar(158, 138, 90, 1);
+    $('#redzone').setAttribute('d', 'M' + a[0] + ' ' + a[1] + ' A90 90 0 0 1 ' + b[0] + ' ' + b[1]);
+  })();
+
+  var dash = $('#dash'), nT = $('#nT'), nS = $('#nS'), key = $('#key');
+  var startBtn = $('#startBtn'), revBtn = $('#revBtn'), msg = $('#ignMsg'), lightBtn = $('#lightBtn'), front = $('#front');
+  var st = {rpm: 0, rpmT: 0, spd: 0, spdT: 0, running: false, busy: false, rev: false, t0: 0};
+  function setNeedle(el, cx, frac){
+    frac = Math.max(-0.01, Math.min(1.02, frac));
+    el.setAttribute('transform', 'rotate(' + (-135 + 270 * frac).toFixed(2) + ' ' + cx + ' 138)');
+  }
+  function frame(){
+    st.rpm += (st.rpmT - st.rpm) * 0.16;
+    st.spd += (st.spdT - st.spd) * 0.12;
+    setNeedle(nT, 158, st.rpm / 8000);
+    setNeedle(nS, 442, st.spd / 180);
+    if (st.running) Engine.set(st.rpm);
+    requestAnimationFrame(frame);
+  }
+  setNeedle(nT, 158, 0); setNeedle(nS, 442, 0);
+  requestAnimationFrame(frame);
+
+  // Холостой ход: подсос поднимает обороты, потом они плывут к 880, стрелки подёргиваются
+  setInterval(function(){
+    if (!st.running || st.rev) return;
+    var idle = 880 + 420 * Math.exp(-(performance.now() - st.t0) / 2600);
+    st.rpmT = idle + (Math.random() - 0.5) * 90;
+    st.spdT = Math.random() < 0.18 ? Math.random() * 7 : st.spdT * 0.5;
+  }, 110);
+
+  /* ---------- Звук двигателя (Web Audio API) ---------- */
+  var Engine = (function(){
+    var ctx = null, out = null, nodes = null, noiseBuf = null;
+    function init(){
+      if (!ctx) {
+        var AC = window.AudioContext || window.webkitAudioContext;
+        if (!AC) return false;
+        ctx = new AC();
+        var comp = ctx.createDynamicsCompressor();
+        comp.threshold.value = -16; comp.ratio.value = 4;
+        out = ctx.createGain(); out.gain.value = 0.9;
+        // Срезаем гулкие низы, чтобы звук был суше и «металличнее»
+        var hp = ctx.createBiquadFilter(); hp.type = 'highpass'; hp.frequency.value = 150; hp.Q.value = 0.7;
+        var hp2 = ctx.createBiquadFilter(); hp2.type = 'highpass'; hp2.frequency.value = 110; hp2.Q.value = 0.7;
+        out.connect(hp); hp.connect(hp2); hp2.connect(comp); comp.connect(ctx.destination);
+        noiseBuf = ctx.createBuffer(1, ctx.sampleRate * 2, ctx.sampleRate);
+        var d = noiseBuf.getChannelData(0), last = 0;
+        for (var i = 0; i < d.length; i++) { var w = Math.random() * 2 - 1; last = (last + 0.04 * w) / 1.04; d[i] = last * 3.5; } // «коричневый» шум
+      }
+      if (ctx.state === 'suspended') ctx.resume();
+      return true;
+    }
+    function noise(){ var s = ctx.createBufferSource(); s.buffer = noiseBuf; s.loop = true; return s; }
+    function shaperCurve(k){
+      var n = 1024, c = new Float32Array(n);
+      for (var i = 0; i < n; i++) { var x = i * 2 / n - 1; c[i] = Math.tanh(k * x); }
+      return c;
+    }
+    // Стартер: надрывное «вжж-вжж-вжж» с тактами компрессии
+    function starter(dur){
+      if (!init()) return;
+      var t = ctx.currentTime;
+      var o = ctx.createOscillator(); o.type = 'sawtooth';
+      o.frequency.setValueAtTime(170, t); o.frequency.linearRampToValueAtTime(230, t + dur);
+      var lp = ctx.createBiquadFilter(); lp.type = 'lowpass'; lp.frequency.value = 2200;
+      var g = ctx.createGain(); g.gain.setValueAtTime(0.0001, t); g.gain.exponentialRampToValueAtTime(0.16, t + 0.05);
+      g.gain.setValueAtTime(0.16, t + dur - 0.08); g.gain.exponentialRampToValueAtTime(0.0001, t + dur);
+      var lfo = ctx.createOscillator(); lfo.type = 'square'; lfo.frequency.setValueAtTime(5.5, t); lfo.frequency.linearRampToValueAtTime(8, t + dur);
+      var lg = ctx.createGain(); lg.gain.value = 0.11;
+      lfo.connect(lg); lg.connect(g.gain);
+      var n = noise(), nb = ctx.createBiquadFilter(); nb.type = 'bandpass'; nb.frequency.value = 2400; nb.Q.value = 3;
+      var ng = ctx.createGain(); ng.gain.value = 0.05;
+      n.connect(nb); nb.connect(ng); ng.connect(g);
+      o.connect(lp); lp.connect(g); g.connect(out);
+      [o, lfo, n].forEach(function(s){ s.start(t); s.stop(t + dur + 0.05); });
+    }
+    function start(rpm){
+      if (!init() || nodes) return;
+      var t = ctx.currentTime, f = rpm / 30; // частота вспышек 4-цилиндрового 4-тактного мотора
+      var master = ctx.createGain(); master.gain.setValueAtTime(0.0001, t); master.gain.exponentialRampToValueAtTime(1, t + 0.12);
+      var o1 = ctx.createOscillator(); o1.type = 'sawtooth'; o1.frequency.value = f;
+      var o2 = ctx.createOscillator(); o2.type = 'square'; o2.frequency.value = f / 2;
+      var o3 = ctx.createOscillator(); o3.type = 'triangle'; o3.frequency.value = f * 2.01;
+      var g1 = ctx.createGain(); g1.gain.value = 0.5;
+      var g2 = ctx.createGain(); g2.gain.value = 0.08;
+      var g3 = ctx.createGain(); g3.gain.value = 0.16;
+      var sh = ctx.createWaveShaper(); sh.curve = shaperCurve(2.6); sh.oversample = '2x';
+      var lp = ctx.createBiquadFilter(); lp.type = 'lowpass'; lp.frequency.value = 700; lp.Q.value = 2.2;
+      var eg = ctx.createGain(); eg.gain.value = 0.42;
+      o1.connect(g1); o2.connect(g2); o3.connect(g3);
+      g1.connect(sh); g2.connect(sh); g3.connect(sh);
+      sh.connect(lp); lp.connect(eg); eg.connect(master);
+      // Выхлоп: шум, промодулированный тактами работы цилиндров
+      var n = noise(), nb = ctx.createBiquadFilter(); nb.type = 'bandpass'; nb.frequency.value = 480; nb.Q.value = 0.8;
+      var ng = ctx.createGain(); ng.gain.value = 0.25;
+      var lfo = ctx.createOscillator(); lfo.type = 'square'; lfo.frequency.value = f;
+      var lg = ctx.createGain(); lg.gain.value = 0.25;
+      lfo.connect(lg); lg.connect(ng.gain);
+      n.connect(nb); nb.connect(ng); ng.connect(master);
+      // Шелест клапанов
+      var n2 = noise(), hb = ctx.createBiquadFilter(); hb.type = 'bandpass'; hb.frequency.value = 3200; hb.Q.value = 1.2;
+      var hg = ctx.createGain(); hg.gain.value = 0.012;
+      n2.connect(hb); hb.connect(hg); hg.connect(master);
+      master.connect(out);
+      [o1, o2, o3, n, n2, lfo].forEach(function(s){ s.start(t); });
+      nodes = {master: master, o1: o1, o2: o2, o3: o3, lfo: lfo, lp: lp, eg: eg, ng: ng, nb: nb, src: [o1, o2, o3, n, n2, lfo]};
+    }
+    function set(rpm){
+      if (!nodes) return;
+      var t = ctx.currentTime, f = Math.max(4, rpm / 30), k = rpm / 6000;
+      nodes.o1.frequency.setTargetAtTime(f, t, 0.03);
+      nodes.o2.frequency.setTargetAtTime(f / 2, t, 0.03);
+      nodes.o3.frequency.setTargetAtTime(f * 2.01, t, 0.03);
+      nodes.lfo.frequency.setTargetAtTime(f, t, 0.03);
+      nodes.lp.frequency.setTargetAtTime(550 + rpm * 0.35, t, 0.05);
+      nodes.nb.frequency.setTargetAtTime(420 + rpm * 0.2, t, 0.05);
+      nodes.eg.gain.setTargetAtTime(0.38 + k * 0.35, t, 0.05);
+      nodes.ng.gain.setTargetAtTime(0.22 + k * 0.3, t, 0.05);
+    }
+    function stop(){
+      if (!nodes) return;
+      var n = nodes, t = ctx.currentTime;
+      nodes = null;
+      n.o1.frequency.setTargetAtTime(6, t, 0.25); n.o2.frequency.setTargetAtTime(3, t, 0.25); n.lfo.frequency.setTargetAtTime(6, t, 0.25);
+      n.master.gain.setTargetAtTime(0.0001, t + 0.1, 0.22);
+      n.src.forEach(function(s){ try { s.stop(t + 1.4); } catch (e) {} });
+    }
+    return {init: init, starter: starter, start: start, set: set, stop: stop};
+  })();
+
+  var crankTimer = null;
+  function startEngine(){
+    if (st.busy) return;
+    st.busy = true;
+    Engine.init();
+    startBtn.disabled = true;
+    key.setAttribute('data-pos', 'start');
+    dash.classList.add('ign');
+    msg.classList.remove('show');
+    var crankDur = 1.1;
+    Engine.starter(crankDur);
+    var flip = false;
+    crankTimer = setInterval(function(){ flip = !flip; st.rpmT = flip ? 340 : 140; }, 130);
+    setTimeout(function(){
+      clearInterval(crankTimer);
+      st.rpmT = 1700; st.rpm = 600;
+      st.running = true; st.t0 = performance.now();
+      Engine.start(st.rpm);
+      st.spdT = 14; // стрелка спидометра вздрагивает
+      key.setAttribute('data-pos', 'on');
+      dash.classList.add('running');
+      msg.textContent = 'Завелась с пол-оборота, как в 1970-м';
+      msg.classList.add('show');
+      startBtn.textContent = 'Заглушить';
+      startBtn.classList.remove('red'); startBtn.classList.add('green');
+      startBtn.disabled = false; revBtn.disabled = false;
+      st.busy = false;
+    }, crankDur * 1000);
+  }
+  function stopEngine(){
+    st.running = false; st.rev = false;
+    st.rpmT = 0; st.spdT = 0;
+    Engine.stop();
+    key.setAttribute('data-pos', 'off');
+    dash.classList.remove('ign', 'running');
+    msg.textContent = 'Двигатель заглушен. До встречи на трассе.';
+    startBtn.textContent = 'Завести двигатель';
+    startBtn.classList.add('red'); startBtn.classList.remove('green');
+    revBtn.disabled = true;
+  }
+  startBtn.addEventListener('click', function(){ st.running ? stopEngine() : startEngine(); });
+  revBtn.addEventListener('click', function(){
+    if (!st.running) return;
+    st.rev = true; st.rpmT = 4600; st.spdT = 3;
+    setTimeout(function(){ st.rpmT = 1000; }, 380);
+    setTimeout(function(){ st.rev = false; }, 900);
+  });
+  document.addEventListener('visibilitychange', function(){ if (document.hidden && st.running) stopEngine(); });
+
+  lightBtn.addEventListener('click', function(){
+    var on = !front.classList.contains('on');
+    front.classList.toggle('on', on);
+    dash.classList.toggle('lights', on);
+    lightBtn.classList.toggle('on', on);
+    lightBtn.textContent = on ? 'Выключить свет' : 'Включить свет';
+    lightBtn.setAttribute('aria-pressed', on);
+  });
+
+  /* ---------- Калькулятор ---------- */
+  var PRICE70 = 5500, SAL70 = 122, PRICE26 = 1100000;
+  var salary = $('#salary');
+  function plural(n, one, few, many){
+    if (!Number.isInteger(n)) return few;
+    var a = Math.abs(n) % 100, b = a % 10;
+    if (a > 10 && a < 20) return many;
+    if (b === 1) return one;
+    if (b >= 2 && b <= 4) return few;
+    return many;
+  }
+  function fmtMonths(m){ return m < 10 ? Math.round(m * 10) / 10 : Math.round(m); }
+  function calc(){
+    var s = parseFloat(String(salary.value).replace(/\s/g, '').replace(',', '.'));
+    var m70 = PRICE70 / SAL70, v70 = Math.round(m70);
+    $('#m70').textContent = v70 + ' ' + plural(v70, 'зарплата', 'зарплаты', 'зарплат');
+    if (!s || s <= 0) {
+      $('#m26').textContent = '—';
+      $('#bar26').style.width = '0';
+      $('#bar70').style.width = '100%';
+      $('#verdict').textContent = 'Введите зарплату, чтобы сравнить.';
+      return;
+    }
+    var m26 = PRICE26 / s, v26 = fmtMonths(m26), max = Math.max(m70, m26);
+    $('#m26').textContent = nf1.format(v26) + ' ' + plural(v26, 'зарплата', 'зарплаты', 'зарплат');
+    $('#bar70').style.width = (m70 / max * 100) + '%';
+    $('#bar26').style.width = (m26 / max * 100) + '%';
+    var ratio = m26 / m70, html;
+    function times(x){ var r = x >= 10 ? Math.round(x) : Math.round(x * 10) / 10; return nf1.format(r) + ' ' + plural(r, 'раз', 'раза', 'раз'); }
+    if (ratio > 1.05) html = 'Копейка была в <em>' + times(ratio) + '</em> доступнее, чем Granta для вас сегодня';
+    else if (ratio < 0.95) html = 'Копейка была в <em>' + times(1 / ratio) + '</em> дороже, чем Granta для вас сегодня';
+    else html = 'Для вас копейка и Granta <em>почти одинаково</em> доступны';
+    $('#verdict').innerHTML = html;
+  }
+  salary.addEventListener('input', calc);
+  $$('.presets button').forEach(function(b){ b.addEventListener('click', function(){ salary.value = b.dataset.v; calc(); }); });
+  calc();
+
+  /* ---------- Сравнение с современностью ---------- */
+  var CARS = [
+    {power: 64, accel: 20, speed: 140, range: 460, rangeSub: '8,5 л/100 км · бак 39 л', mass: 955, price: 5500, priceSub: 'рублей 1970 года'},
+    {power: 90, accel: 11.8, speed: 176, range: 730, rangeSub: '≈ 6,8 л/100 км · бак 50 л', mass: 1160, price: 1100000, priceSub: 'рублей, 2026 год'},
+    {power: 283, accel: 6.1, speed: 201, range: 513, rangeSub: 'электро · по циклу WLTP', mass: 1760, price: 3500000, priceSub: '≈ $42 490 в США, в рублях — оценка'}
+  ];
+  var ROWS = [
+    {k: 'power', name: 'Мощность', unit: 'л. с.', dec: 0},
+    {k: 'accel', name: 'Разгон 0–100 км/ч', unit: 'с', dec: 1, lower: true},
+    {k: 'speed', name: 'Макс. скорость', unit: 'км/ч', dec: 0},
+    {k: 'range', name: 'Запас хода', unit: 'км', dec: 0, sub: 'rangeSub', approx: true},
+    {k: 'mass', name: 'Масса', unit: 'кг', dec: 0},
+    {k: 'price', name: 'Цена', unit: '₽', dec: 0, sub: 'priceSub'}
+  ];
+  var table = $('#cmpTable'), curCar = 0, shown = {};
+  table.innerHTML = ROWS.map(function(r){
+    var max = Math.max.apply(null, CARS.map(function(c){ return c[r.k]; }));
+    var bars = CARS.map(function(c, i){
+      var w = r.lower ? (Math.min.apply(null, CARS.map(function(x){ return x[r.k]; })) / c[r.k]) : (c[r.k] / max);
+      return '<div data-i="' + i + '"><i style="width:' + (Math.max(0.6, w * 100)).toFixed(1) + '%"></i></div>';
+    }).join('');
+    return '<div class="cmp-row" data-k="' + r.k + '"><div class="cmp-k">' + r.name + (r.lower ? '<br><small>меньше — лучше</small>' : '') + '</div>' +
+      '<div class="cmp-v"><span class="n">0</span><small>' + r.unit + '</small><span class="sub"></span></div>' +
+      '<div class="cmp-bars" aria-hidden="true">' + bars + '</div></div>';
+  }).join('');
+  function fmtVal(v, dec){ return dec ? nf1.format(Math.round(v * 10) / 10) : nf.format(Math.round(v)); }
+  function showCar(idx, animate){
+    curCar = idx;
+    $$('.tab').forEach(function(t, i){ t.setAttribute('aria-selected', i === idx ? 'true' : 'false'); t.tabIndex = i === idx ? 0 : -1; });
+    ROWS.forEach(function(r){
+      var row = table.querySelector('[data-k="' + r.k + '"]'), n = row.querySelector('.n'), sub = row.querySelector('.sub');
+      var from = shown[r.k] || 0, to = CARS[idx][r.k], t0 = null, dur = animate && !reduce ? 650 : 0;
+      shown[r.k] = to;
+      sub.textContent = r.sub ? CARS[idx][r.sub] : '';
+      sub.classList.remove('flash'); void sub.offsetWidth; sub.classList.add('flash');
+      $$('.cmp-bars div', row).forEach(function(d, i){ d.classList.toggle('cur', i === idx); });
+      function step(t){
+        if (!t0) t0 = t;
+        var p = dur ? Math.min(1, (t - t0) / dur) : 1, e = 1 - Math.pow(1 - p, 3);
+        n.textContent = (r.approx && idx < 2 ? '≈ ' : '') + fmtVal(from + (to - from) * e, r.dec);
+        if (p < 1) requestAnimationFrame(step);
+      }
+      requestAnimationFrame(step);
+    });
+  }
+  $$('.tab').forEach(function(t, i){
+    t.addEventListener('click', function(){ showCar(i, true); });
+    t.addEventListener('keydown', function(e){
+      if (e.key === 'ArrowRight' || e.key === 'ArrowLeft') {
+        var ni = (curCar + (e.key === 'ArrowRight' ? 1 : 2)) % 3;
+        showCar(ni, true); $$('.tab')[ni].focus();
+      }
+    });
+  });
+  showCar(0, false);
+
+  /* ---------- До / после ---------- */
+  var ba = $('#ba'), dragging = false;
+  function setBA(pct){
+    pct = Math.max(0, Math.min(100, pct));
+    ba.style.setProperty('--p', pct + '%');
+    ba.setAttribute('aria-valuenow', Math.round(pct));
+  }
+  function fromEvent(e){ var r = ba.getBoundingClientRect(); setBA((e.clientX - r.left) / r.width * 100); }
+  ba.addEventListener('pointerdown', function(e){
+    dragging = true;
+    try { ba.setPointerCapture(e.pointerId); } catch (err) {}
+    if (e.pointerType !== 'touch') fromEvent(e); // на телефоне не прыгаем от простого касания при прокрутке
+  });
+  ba.addEventListener('pointermove', function(e){ if (dragging) fromEvent(e); });
+  ['pointerup', 'pointercancel', 'lostpointercapture'].forEach(function(ev){ ba.addEventListener(ev, function(){ dragging = false; }); });
+  // Свайп на телефоне: горизонтальное движение двигает шторку, вертикальное — прокручивает страницу
+  var tx = null, ty = null, horiz = null;
+  ba.addEventListener('touchstart', function(e){ tx = e.touches[0].clientX; ty = e.touches[0].clientY; horiz = null; }, {passive: true});
+  ba.addEventListener('touchmove', function(e){
+    var t = e.touches[0];
+    if (horiz === null) horiz = Math.abs(t.clientX - tx) > Math.abs(t.clientY - ty);
+    if (horiz) { e.preventDefault(); var r = ba.getBoundingClientRect(); setBA((t.clientX - r.left) / r.width * 100); }
+  }, {passive: false});
+  ba.addEventListener('keydown', function(e){
+    var v = parseFloat(ba.getAttribute('aria-valuenow'));
+    if (e.key === 'ArrowLeft') { setBA(v - 5); e.preventDefault(); }
+    if (e.key === 'ArrowRight') { setBA(v + 5); e.preventDefault(); }
+    if (e.key === 'Home') { setBA(0); e.preventDefault(); }
+    if (e.key === 'End') { setBA(100); e.preventDefault(); }
+  });
+  setBA(50);
+})();
+</script>
+</body>
+</html>
